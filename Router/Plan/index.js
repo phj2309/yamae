@@ -8,7 +8,7 @@ const controller = require('./controller');
 
 router.get('/', controller.t);
 
-router.post('/', controller.n);
+router.post('/detailPlanShow/:userId', controller.insertPlan);
 // USER VIEW
 //router.get('/survey/:key', userViewController.userSwitch);
 

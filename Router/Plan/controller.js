@@ -4,16 +4,33 @@ exports.t = async function(req, res)
 {
     res.render("plan.html");
 }
-exports.n = async function(req, res)
+exports.insertPlan = async function(req, res)
 {
+    var userId = req.params.userId;
     var title = req.body.title;
     var country = req.body.country;
-    var startDate = req.body.startDate;
-    var finishDate = req.body.finishDate;
-    mapper.plan.createPlan(title, country, startDate, finishDate).then(function(result) {
+   //var startDate = req.body.startDate;
+    //var finishDate = req.body.finishDate;
+    var sYear = req.body.sYear;
+    var sMonth = req.body.sMonth;
+    var sDay = req.body.sDay;
+    var fYear = req.body.fYear;
+    var fMonth = req.body.fMonth;
+    var fDay = req.body.fDay;
+
+    var startDate = new Date(sYear, sMonth-1, sDay);
+    var finishDate = new Date(fYear, fMonth-1, fDay);
+
+    console.log(userId, title, country, sYear, sMonth, sDay, fYear, fMonth, fDay);
+    console.log(startDate, finishDate);
+    //console.log(finishDate-startDate);
+    res.render("detailPlanShow.html");
+
+    /*
+    mapper.plan.createPlan(userId, title, startDate, finishDate, country).then(function(result) {
         res.render("detailPlanShow.html", { title: title, country: country, startDate: startDate, finishDate: finishDate});
     }).catch(function(error) {
         console.log(error);
     });
-    
+    */
 }
