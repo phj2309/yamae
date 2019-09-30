@@ -1,0 +1,37 @@
+body {
+    background: rgb(242, 244, 246);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  .drag-list {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .drag-list > li {
+    list-style: none;
+    background: rgb(255, 255, 255);
+    border: 1px solid rgb(196, 196, 196);
+    margin: 5px 0;
+    font-size: 24px;
+  }
+
+  .drag-list .title {
+    display: inline-block;
+    width: 80%;
+    padding: 6px 6px 6px 12px;
+    vertical-align: top;    
+  }
+
+  .drag-list .drag-area {
+      display: inline-block;
+    background: #fbc7d4;
+    width: 20%;
+    height : 36px;
+    vertical-align: top;
+    float: right;
+    cursor: move;
+  }
