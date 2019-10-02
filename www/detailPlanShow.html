@@ -23,7 +23,8 @@
     <link href="../../static/css/detailPlanShow.css" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <script src="../../static/js/detailPlanShow.js"></script>
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
 <body class="">
@@ -151,6 +152,7 @@
                                                 <div class="clearfix"></div>
                                             </form>
                                         </div>                                      
+                                        <div w3-include-html="./detailPlanLoop.html"></div>               
                                     </div>
                                 </div>
                             </div>
@@ -207,8 +209,13 @@
     <script type="text/javascript" src="../../static/js/drag-arrange.js"></script>
     <script type="text/javascript" src="../../static/js/drag-arrange.min.js"></script>
     <script>
+
+        w3IncludeHTML();
+        
         $(document).ready(function () {
             $().ready(function () {
+
+                $("#detailPlanLoop").load("./detailPlanLoop.html");
 
                 $('#add').click(function () {
                     $('#add_contents').append("<div class='col-12' id= 'add_contents'><div class='form-group'><label class='bmd-label-floating'>Your Travel Mates</label><input type='text' class='form-control'></div></div>")
