@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var bodyParser = require('body-parser');
 
 // User Require
 var database = require('./DB/connection.js');
@@ -13,6 +14,9 @@ var app = express();
 app.set('views', path.join( __dirname + '/www'));
 app.set('view engine', 'ejs');
 app.engine('html', require('ejs').renderFile);
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 app.set('port', process.env.PORT || 3000);
 

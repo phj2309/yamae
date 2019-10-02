@@ -9,6 +9,8 @@ const controller = require('./controller');
 router.get('/', controller.t);
 
 router.post('/detailPlanShow/:userId', controller.insertPlan);
+
+router.get('/detailPlanCreate', controller.insertDetailPlan);
 // USER VIEW
 //router.get('/survey/:key', userViewController.userSwitch);
 
