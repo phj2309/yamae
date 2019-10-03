@@ -52,6 +52,14 @@ exports.insertPlan = async function(req, res)
         console.log(error);
     });
 
-    
-    
+}
+
+exports.insertDetailPlan = async function(req, res)
+{
+    res.render("detailPlanCreate.html");
+}
+
+exports.cost = async function(req, res)
+{
+    res.render("costPage.html");
 }

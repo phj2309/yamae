@@ -35,6 +35,7 @@ database.init();
 
 app.use('/', require('./Router/Home'));
 app.use('/plan', require('./Router/Plan'));
+app.use('/map', require('./Router/Map'));
 
 // css, js, img 정적파일
 app.use('/static', express.static('static'));
