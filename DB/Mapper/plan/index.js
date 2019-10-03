@@ -7,11 +7,51 @@ module.exports = {
 			var insertQuery = 'INSERT INTO plan (user_id, title, startDate, finishDate, country) VALUES (?, ?, ?, ?, ?)';
 
 			sql.excuteParam(insertQuery, [_userId, _title, _startDate, _finishDate, _country]).then(function(rows) {
+				resolve(rows);
+			}).catch(function(error) {
+				reject(error);
+			});
+		});
+	},
+	insertGroup: function(_planId,_nickname) {
+        return new Promise(function(resolve, reject) {
+			var insertQuery = 'INSERT INTO tripontrip_db.group (plan_id, nickname) VALUES (?, ?)';
+
+			sql.excuteParam(insertQuery, [_planId, _nickname]).then(function(rows) {
 				resolve(true);
 			}).catch(function(error) {
 				reject(error);
 			});
 		});
-    }
+	},
+	searchPlanByTitle: function(_Keyword) {
+		return new Promise(function(resolve, reject) {
+			var selectQuery = 'SELECT * FROM plan WHERE title LIKE "%?%"';
+
+			sql.excuteParam(selectQuery, [_Keyword]).then(function(rows) {
+				if(rows.length == 0)
+					resolve(null);
+
+				resolve(rows);
+			}).catch(function(error) {
+				reject(error);
+			});
+		});
+	},
+	searchPlanByTitle: function(_Keyword) {
+		return new Promise(function(resolve, reject) {
+			var selectQuery = 'SELECT * FROM plan WHERE title LIKE "%?%"';
+
+			sql.excuteParam(selectQuery, [_Keyword]).then(function(rows) {
+				if(rows.length == 0)
+					resolve(null);
+
+				resolve(rows);
+			}).catch(function(error) {
+				reject(error);
+			});
+		});
+	}
+	
 
 }

@@ -21,16 +21,45 @@ exports.insertPlan = async function(req, res)
     var startDate = new Date(sYear, sMonth-1, sDay);
     var finishDate = new Date(fYear, fMonth-1, fDay);
 
+    var btMs = finishDate.getTime() - startDate.getTime();
+    var btDay = btMs/(1000*60*60*24) + 1;
     console.log(userId, title, country, sYear, sMonth, sDay, fYear, fMonth, fDay);
-    console.log(startDate, finishDate);
+    console.log(btDay);
     //console.log(finishDate-startDate);
-    res.render("detailPlanShow.html");
-
-    /*
+    //res.render("detailPlanShow.html");
+    var i=0;
+    var s = 'p';
+    
     mapper.plan.createPlan(userId, title, startDate, finishDate, country).then(function(result) {
-        res.render("detailPlanShow.html", { title: title, country: country, startDate: startDate, finishDate: finishDate});
+        console.log(result.insertId);
+        var planId = result.insertId;
+
+        for(i=0; i<req.body.mate.length; i++) {
+            var nickname = req.body.mate[i];
+
+            mapper.plan.insertGroup(planId, nickname).then(function(result) {
+                
+               console.log("성공");
+               // res.render("detailPlanShow.html", { day : btDay});
+            }).catch(function(error) {
+                console.log(error);
+                
+            });
+            //console.log(nickname);
+        }
+        res.render("detailPlanShow.html", { day : btDay});
     }).catch(function(error) {
         console.log(error);
     });
-    */
+
+}
+
+exports.insertDetailPlan = async function(req, res)
+{
+    res.render("detailPlanCreate.html");
+}
+
+exports.cost = async function(req, res)
+{
+    res.render("costPage.html");
 }
