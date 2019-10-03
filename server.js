@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const bodyParser = require('body-parser');
 
 // User Require
 var database = require('./DB/connection.js');
@@ -21,6 +22,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '/static')));
+app.use(bodyParser.urlencoded({extended:false}));
 
 // DB 연결
 database.init();
@@ -31,6 +33,7 @@ database.init();
 
 app.use('/', require('./Router/Home'));
 app.use('/plan', require('./Router/Plan'));
+app.use('/user', require('./Router/User'));
 
 // css, js, img 정적파일
 app.use('/static', express.static('static'));

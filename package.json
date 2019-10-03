@@ -13,17 +13,20 @@
   "author": "Apache Cordova Team",
   "license": "Apache-2.0",
   "dependencies": {
+    "body-parser": "^1.19.0",
+    "consolidate": "^0.15.1",
+    "cookie-parser": "^1.4.4",
     "cordova-android": "^8.1.0",
     "cordova-plugin-console": "^1.1.0",
     "cordova-plugin-dialogs": "^2.0.2",
     "cordova-plugin-file": "^6.0.2",
     "cordova-plugin-geolocation": "^4.0.2",
     "cordova-plugin-vibration": "^3.1.1",
-    "consolidate": "^0.15.1",
     "cors": "^2.8.5",
     "ejs": "^2.6.1",
     "express": "^4.16.4",
     "express-session": "^1.16.1",
+    "morgan": "^1.9.1",
     "mysql": "^2.17.1"
   },
   "devDependencies": {
