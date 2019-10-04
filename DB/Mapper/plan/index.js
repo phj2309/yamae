@@ -62,7 +62,17 @@ module.exports = {
 				reject(error);
 			});
 		});
-	}
-	
+	},
 
+	cost: function (_item, _cost) {
+		return new Promise(function (resolve, reject) {
+			var insertQuery = 'INSERT INTO plan (item, cost) VALUES (?, ?)';
+
+			sql.excuteParam(insertQuery, [_item, _cost]).then(function (rows) {
+				resolve(rows);
+			}).catch(function (error) {
+				reject(error);
+			});
+		});
+	}
 }
