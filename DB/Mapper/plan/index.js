@@ -24,6 +24,17 @@ module.exports = {
 			});
 		});
 	},
+	createDetailPlan: function(_planId, _days, _content, _startTime, _finishTime) {
+        return new Promise(function(resolve, reject) {
+			var insertQuery = 'INSERT INTO tripontrip_db.days_detail (plan_id, days, content, startTime, finishTime) VALUES (?, ?, ?, ?, ?)';
+
+			sql.excuteParam(insertQuery, [_planId, _days, _content, _startTime, _finishTime]).then(function(rows) {
+				resolve(rows);
+			}).catch(function(error) {
+				reject(error);
+			});
+		});
+	},
 	searchPlanByTitle: function(_Keyword) {
 		return new Promise(function(resolve, reject) {
 			var selectQuery = 'SELECT * FROM plan WHERE title LIKE "%?%"';
@@ -38,9 +49,9 @@ module.exports = {
 			});
 		});
 	},
-	searchPlanByTitle: function(_Keyword) {
+	searchPlanByPlace: function(_Keyword) {
 		return new Promise(function(resolve, reject) {
-			var selectQuery = 'SELECT * FROM plan WHERE title LIKE "%?%"';
+			var selectQuery = 'SELECT * FROM place WHERE address LIKE "%?%"';
 
 			sql.excuteParam(selectQuery, [_Keyword]).then(function(rows) {
 				if(rows.length == 0)

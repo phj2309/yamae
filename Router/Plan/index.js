@@ -6,11 +6,15 @@ const controller = require('./controller');
 //const adminViewController = require('./AdminView/controller');
 
 
-router.get('/', controller.t);
+router.get('/', controller.toPlan);
 
 router.post('/detailPlanShow/:userId', controller.insertPlan);
 
-router.get('/detailPlanCreate', controller.insertDetailPlan);
+router.get('/detailPlanCreate', controller.showToCreate);
+
+//router.post('/detailPlanCreate', controller.)
+
+router.post('/detailPlanShow', controller.insertDetailPlan)
 
 router.get('/costPage', controller.cost);
 // USER VIEW

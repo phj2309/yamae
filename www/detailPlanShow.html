@@ -29,7 +29,8 @@
 
 <body class="">
     <div class="wrapper ">
-        <div class="sidebar" data-color="purple" data-background-color="white" data-image="../../static/img/sidebar-1.jpg">
+        <div class="sidebar" data-color="purple" data-background-color="white"
+            data-image="../../static/img/sidebar-1.jpg">
             <div class="logo">
                 <a class="simple-text logo-normal" href="./index"> Trip ON Trip </a>
             </div>
@@ -101,58 +102,62 @@
                         <div class="col-md-8">
                             <div class="card">
                                 <div class="card-header card-header-primary">
-                                    <h3 class="card-title">Modify your plans in detail</h3>
+                                    <h3 class="card-title"><%= title %></h3>
                                 </div>
                                 <div class="card-body">
                                     <div class="container">
                                         <div class="leftbox">
                                             <nav class="tabNav">
-                                                <script>
-                                                    for (var i = 1; i <= 5; i++) {
-                                                        document.write('<a id="day' + i + '">DAY' + i + '</a>');
-                                                    }
-                                                </script>
+                                                <%  for (var i = 1; i <= day; i++) { %>
+                                                <a href="#" id="day<%= i %>">DAY <%= i %> </a>;
+                                                <%   } %>
                                             </nav>
                                         </div>
                                         <div class="rightbox">
-                                            <form>
+                                            <form method="post">
                                                 <div class="row">
                                                     <div class="col-md-3" id="detailViewColor">
-                                                        <button type="button" class="btn btn-primary" onClick="location.href= '/plan/detailPlanCreate'">
+                                                        <button type="button" class="btn btn-primary"
+                                                            onClick="location.href= '/plan/detailPlanCreate/<%= planId %>'">
                                                             <i class='material-icons'>add</i>
                                                         </button>
-                                                        <button type="button" class="btn btn-primary" onClick="location.href='/plan/costPage'">
+                                                        <button type="button" class="btn btn-primary"
+                                                            onClick="location.href='/plan/costPage'">
                                                             <i class="material-icons">attach_money</i>
                                                         </button>
-                                                        <button type="button" class="btn btn-primary"><i class="material-icons"> favorite</i>
+                                                        <button type="button" class="btn btn-primary"><i
+                                                                class="material-icons"> favorite</i>
                                                         </button>
                                                     </div>
                                                     <br /><br /><br />
                                                     <div class="col-md-3">
                                                         <h4>Plan List</h4>
                                                         <ul class="drag-list">
-                                                            <li><span class="title">list 1</span><span class="drag-area"></span></li>
-                                                            <li><span class="title">list 2</span><span class="drag-area"></span></li>
+                                                            <li><span class="title">list 1</span><span
+                                                                    class="drag-area"></span></li>
+                                                            <li><span class="title">list 2</span><span
+                                                                    class="drag-area"></span></li>
                                                         </ul>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <h4>Review</h4><textarea id="textfield" rows="5" cols="20" class="form-control"
+                                                            <h4>Review</h4><textarea id="textfield" rows="5" cols="20"
+                                                                class="form-control"
                                                                 style="border:1px solid rgb(196, 196, 196);"></textarea>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <br />
-                                                
-                                                    <button type="button" class="btn btn-primary" id="detailViewColor2"
+
+                                                <button type="button" class="btn btn-primary" id="detailViewColor2"
                                                     style="width :48%; font-size:14pt;">Delete</button>
-                                                    
-                                                    <button type="submit" class="btn btn-primary"
-                                                    id="detailViewColor2" style="width :48%; font-size:14pt;">Save</button>
+
+                                                <button type="submit" class="btn btn-primary" id="detailViewColor2"
+                                                    style="width :48%; font-size:14pt;">Save</button>
                                                 <div class="clearfix"></div>
                                             </form>
-                                        </div>                                      
-                                        <div w3-include-html="./detailPlanLoop.html"></div>               
+                                        </div>
+                                        <div w3-include-html="./detailPlanLoop.html"></div>
                                     </div>
                                 </div>
                             </div>
@@ -210,12 +215,8 @@
     <script type="text/javascript" src="../../static/js/drag-arrange.min.js"></script>
     <script>
 
-        w3IncludeHTML();
-        
         $(document).ready(function () {
             $().ready(function () {
-
-                $("#detailPlanLoop").load("./detailPlanLoop.html");
 
                 $('#add').click(function () {
                     $('#add_contents').append("<div class='col-12' id= 'add_contents'><div class='form-group'><label class='bmd-label-floating'>Your Travel Mates</label><input type='text' class='form-control'></div></div>")
@@ -223,20 +224,23 @@
 
                 $('li').arrangeable({ dragSelector: '.drag-area' });
 
+                $('nav > a').click(function () {
+                    var dayValue = $(this).attr('id');
+                    console.log(dayValue);
+                });
 
-                 $( document ).ready( function() {
-        var jbOffset = $( '.jbMenu' ).offset();
-        $( window ).scroll( function() {
-          if ( $( document ).scrollTop() > jbOffset.top ) {
-            $( '.jbMenu' ).addClass( 'jbFixed' );
-          }
-          else {
-            $( '.jbMenu' ).removeClass( 'jbFixed' );
-          }
-        });
-      } );
 
-                $("#rightbox").load("../../www/detailPlanLoop.html");
+                $(document).ready(function () {
+                    var jbOffset = $('.jbMenu').offset();
+                    $(window).scroll(function () {
+                        if ($(document).scrollTop() > jbOffset.top) {
+                            $('.jbMenu').addClass('jbFixed');
+                        }
+                        else {
+                            $('.jbMenu').removeClass('jbFixed');
+                        }
+                    });
+                });
 
                 $sidebar = $('.sidebar');
 

@@ -28,7 +28,6 @@ app.use(express.static(path.join(__dirname, '/static')));
 
 // DB 연결
 database.init();
-
   
 //app.use('/store', require('./Router/Store/index'));
 //app.use('/user', require('./Router/User/index'));

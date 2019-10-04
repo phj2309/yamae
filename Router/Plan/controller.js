@@ -1,6 +1,6 @@
 const mapper = require('../../DB/mapperController.js');
 
-exports.t = async function(req, res)
+exports.toPlan = async function(req, res)
 {
     res.render("plan.html");
 }
@@ -47,16 +47,42 @@ exports.insertPlan = async function(req, res)
             });
             //console.log(nickname);
         }
-        res.render("detailPlanShow.html", { day : btDay});
+        res.render("detailPlanShow.html", { day : btDay, planId : planId, title: title});
     }).catch(function(error) {
         console.log(error);
     });
 
 }
 
+exports.showToCreate = async function(req, res)
+{
+    res.render("detailPlanCreate.html", { planId : planId});
+}
+
 exports.insertDetailPlan = async function(req, res)
 {
-    res.render("detailPlanCreate.html");
+    var planId = req.body.planId;
+    var content = req.body.content;
+    var sHour = req.body.sHour;
+    var sMin = req.body.sMin;
+    var fHour = req.body.fHour;
+    var fMin = req.body.fMin;
+    var startTime = new Date();
+    startTime.setHours(sHour, sMin);
+    var finishTime = new Date();
+    finishTime.setHours(fHour, fMin);
+
+    console.log("startTime : "+startTime);
+    console.log("finishTime : "+finishTime);
+
+    mapper.plan.insertDetailPlan(planId, days, content, startTime, finishTime).then(function(result) {
+        console.log("insertDetailPlan success");
+        res.render("detailPlanShow.html");
+     }).catch(function(error) {
+         console.log(error);
+         
+     });
+    
 }
 
 exports.cost = async function(req, res)
