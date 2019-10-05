@@ -50,7 +50,7 @@
                   <p class="card-category">Cost</p>
                 </div>
                 <div class="card-body">
-                  <form action="detailPlanShow.html">
+                  <form action="plan/detailPlanShow">
                     <div class="row">
                       <div class="col-4">
                         <div class="form-group">
@@ -105,6 +105,7 @@
                     </div>
                     <button type="submit" class="btn btn-primary pull-right">save</button>
                     <div class="clearfix"></div>
+                    <input type="hidden" id="count" value="<%= count %>">
                   </form>
                 </div>
               </div>
@@ -180,10 +181,11 @@
           }
 
         }
+        var count = $('#count').val();
         var i = 0;
         $('#btnAdd').click(function () {
           i++
-          addCost(i);
+          addCost(i, count);
         });
 
         $('.fixed-plugin a').click(function (event) {
