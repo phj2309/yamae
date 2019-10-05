@@ -47,6 +47,8 @@ app.use('/', require('./Router/Home'));
 app.use('/plan', require('./Router/Plan'));
 app.use('/user', require('./Router/User'));
 app.use('/map', require('./Router/Map'));
+app.use('/expense', require('./Router/Expense'));
+app.use('/favoritePlan', require('./Router/FavoritePlan'));
 
 // css, js, img 정적파일
 app.use('/static', express.static('static'));

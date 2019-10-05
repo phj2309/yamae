@@ -129,6 +129,8 @@ demo = {
                     console.log(result);
                     console.log(result[0].formatted_address); //주소
                     console.log(status);
+
+                    $('#addressValue').val(result[0].formatted_address);
  
                     if (status === 'OK') {
                         // 맵의 중심 좌표를 설정한다.
@@ -145,6 +147,9 @@ demo = {
                         console.log('위도(latitude) : ' + marker.position.lat()); //위도
                         // 경도
                         console.log('경도(longitude) : ' + marker.position.lng()); //경도
+
+                        $('#lat').val(marker.position.lat());
+                        $('#lon').val(marker.position.lng());
                     } else {
                         alert('지오코드가 다음의 이유로 성공하지 못했습니다 : ' + status);
                     }
