@@ -10,7 +10,7 @@ module.exports = {
 				if(rows[0].count == 0) // 존재하지 않음
 					resolve(false);
 				else
-					resolve(true);
+					resolve(rows);
 			}).catch(function(error) {
 				reject(error);
 			});
