@@ -25,23 +25,21 @@
                         'width': 'auto',
                         'height': 50,
                         'longtitle': true,
-                        'theme': 'dark',
-                        'id': '#loginBtn'
+                        'theme': 'dark'
                     });
             }
             function checkLoginStatus() {
-                var loginBtn = document.querySelector('#loginBtn'); //여기서 #loginBtn은 밑에 넣을 input태그 버튼의 id값임.
-                var nameText = document.querySelector('#name');
+                // var loginBtn = document.querySelector('#loginBtn'); //여기서 #loginBtn은 밑에 넣을 input태그 버튼의 id값임.
+                // var nameText = document.querySelector('#name');
 
                 if (gauth.isSignedIn.get()) {
                     console.log("logined");
-                    // loginBtn.value = 'LOGOUT';
                     var profile = gauth
                         .currentUser
                         .get()
                         .getBasicProfile();
                     // nameText.innerHTML = profile.getName() + '님 안녕하세요';   
-                    nameText = profile.getName();//db에 저장될 때 nickname에 저장
+                    var nameText = profile.getName();//db에 저장될 때 nickname에 저장
                     var gEmail = profile.getEmail(); //db에 저장될 때 id, email에 동시저장
                 } else {
                     console.log("logouted!");
@@ -57,7 +55,9 @@
                     window.gauth = gapi
                         .auth2
                         .init(
-                            {client_id: '848387022872-o2o7mi2pjpfasmjl7aqg4ve27actaeg1.apps.googleusercontent.com'}
+                            {
+                                client_id: '848387022872-o2o7mi2pjpfasmjl7aqg4ve27actaeg1.apps.googleusercontent.com'
+                            }
                         )
                         renderButton();
                     gauth.then(function () {
@@ -193,7 +193,7 @@
                                         <h3 class="card-title">Enter Your Account</h3>
                                     </div>
                                     <div class="card-body">
-                                        <form method="POST" action="/">
+                                        <form method="POST" action="/user">
                                             <div class="login-wrap">
                                                 <div class="login-html">
                                                     <input id="tab-1" type="radio" name="tab" class="sign-in" value="signin" checked="checked">

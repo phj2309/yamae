@@ -72,7 +72,8 @@
                                 aria-haspopup="true"
                                 aria-expanded="false">
                                 <i class="material-icons">person</i>
-                                <p>User</p>
+                                <p><%= nickname %></p>
+                                
                                 <!-- <p class="d-lg-none d-md-block"> User Profile </p> -->
                             </a>
                             <div
@@ -81,7 +82,11 @@
                                 <a class="dropdown-item" href="./costPage">Profile</a>
                                 <a class="dropdown-item" href="#">Settings</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="./user">Log In</a>
+                                <% if(nickname == 'User'){ %>
+                                    <a class="dropdown-item" href="./user/login">Log In</a>
+                                <% } else { %>
+                                    <a class="dropdown-item" href="./user/logout">Log Out</a>
+                                <% } %>
                             </div>
                         </li>
                     </ul>

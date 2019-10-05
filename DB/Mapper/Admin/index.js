@@ -3,23 +3,35 @@ const sql = require('../../sql.js');
 module.exports = {
 
 	isUser: function(_id) {
-		return new Promise(function(resolve, reject) {
+		return new Promise(async function(resolve, reject) {
 			var selectQuery = 'SELECT EXISTS(SELECT 1 FROM user WHERE id = ? LIMIT 1) as count';
 
-			sql.excuteParam(selectQuery, [_id]).then(function(rows) {
-				if(rows[0].count == 0) // 존재하지 않음
+			let result = await sql.excuteParam(selectQuery, [_id]);
+			
+			//.then(function(rows) {
+				if(result[0].count == 0) // 존재하지 않음
 					resolve(false);
-				else
-					resolve(rows);
+				else{
+					resolve(true);
+				}
+		});
+	},
+	//id로 nickname 조회
+	findNicknameById: function(_id){
+		return new Promise(function(resolve, reject) {
+			var selectQuery = 'SELECT nickname FROM user WHERE id = ?';
+
+			sql.excuteParam(selectQuery, [_id]).then(function(rows) {
+				resolve(rows);
 			}).catch(function(error) {
 				reject(error);
 			});
 		});
 	},
-
-	findNicknameById: function(_id){
+	//id로 유저 정보 조회
+	getUserInfoById: function(_id) {
 		return new Promise(function(resolve, reject) {
-			var selectQuery = 'SELECT nickname FROM user WHERE id = ?';
+			var selectQuery = 'SELECT * FROM user WHERE id = ?';
 
 			sql.excuteParam(selectQuery, [_id]).then(function(rows) {
 				resolve(rows);
