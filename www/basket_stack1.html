@@ -16,11 +16,11 @@
         href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <!-- CSS Files -->
-    <link href="../../static/css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
+    <link href="../static/css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link href="../../static/demo/demo.css" rel="stylesheet" />
-    <link href="../../static/css/detailPlanTab.css" rel="stylesheet" />
-    <link href="../../static/css/detailPlanShow.css" rel="stylesheet" />
+    <link href="../static/demo/demo.css" rel="stylesheet" />
+    <link href="../static/css/detailPlanTab.css" rel="stylesheet" />
+    <link href="../static/css/detailPlanShow.css" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://www.w3schools.com/lib/w3.js"></script>
@@ -83,7 +83,7 @@
             <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
                 <div class="container-fluid">
                     <div class="navbar-wrapper">
-                        <a class="navbar-brand" href="#pablo">DETAILS PLAN</a>
+                        <a class="navbar-brand" href="#pablo">Favorite Plan</a>
                     </div>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -99,63 +99,39 @@
             <div class="content">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-md-8">
+                        <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header card-header-primary">
-                                    <h3 class="card-title"><%= title %></h3>
+                                    <h3 class="card-title">Your Favorite Plan</h3>
                                 </div>
                                 <div class="card-body">
-                                    <div class="container">
-                                        <div class="leftbox">
-                                            <nav class="tabNav">
-                                                <%  for (var i = 1; i <= day; i++) { %>
-                                                <a href="#" id="day<%= i %>">DAY <%= i %> </a>
-                                                <%   } %>
-                                            </nav>
-                                        </div>
-                                        <div class="rightbox">
-                                            <form method="post">
-                                                <input type="hidden" name="planId" id="planId" value="<%= planId %>">
-                                                <div class="row">
-                                                    <div class="col-md-3" id="detailViewColor">
-                                                        <button type="button" class="btn btn-primary" id="btnAdd"
-                                                            onClick="location.href= '/plan/detailPlanCreate'">
-                                                            <i class='material-icons'>add</i>
-                                                        </button>
-                                                        <button type="button" class="btn btn-primary"
-                                                            onClick="location.href='/plan/costPage'">
-                                                            <i class="material-icons">attach_money</i>
-                                                        </button>
-                                                        <button type="button" class="btn btn-primary"><i
-                                                                class="material-icons"> favorite</i>
-                                                        </button>
-                                                    </div>
-                                                    <br /><br /><br />
-                                                    <div class="col-md-3">
-                                                        <h4>Plan List</h4>
-                                                        <ul class="drag-list">
-                                                            <li><span class="title">list 1</span><span class="drag-area"></span></li>
-                                                            <li><span class="title">list 2</span><span class="drag-area"></span></li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <div class="form-group">
-                                                            <h4>Review</h4><textarea id="textfield" rows="5" cols="20"
-                                                                class="form-control"
-                                                                style="border:1px solid rgb(196, 196, 196);"></textarea>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <br />
-
-                                                <button type="button" class="btn btn-primary" id="detailViewColor2"
-                                                    >Delete</button>
-
-                                                <button type="submit" class="btn btn-primary" id="detailViewColor2"
-                                                    >Save</button>
-                                                <div class="clearfix"></div>
-                                            </form>
-                                        </div>
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead class="text-primary" id ="thead_style">
+                                                
+                                                <th>Item</th>
+                                                <th>Country</th>
+                                                
+                                                <th>Time</th>
+                                                <th>Writer</th>
+                                                <th>Map</th>
+                                            </thead>
+                                            <tbody class = "tbody_style">
+                                                <tr>
+                                                    
+                                                    <td>블루라군 물놀이</td>
+                                                    <td>라오스</td>
+                                                   
+                                                    <td>10:00/12:30</td>
+                                                    <td>11_hyeon, soubii_g</td>
+                                                    <td>
+                                                            <button type="button" class="btn btn-white btn-round btn-just-icon btn-add" onClick="location.href= '/map'">
+                                                                <i class='material-icons'>map</i>
+                                                            </button>
+                                                        </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
@@ -216,12 +192,15 @@
         $(document).ready(function () {
             $().ready(function () {
 
+                $('#add').click(function () {
+                    $('#add_contents').append("<div class='col-12' id= 'add_contents'><div class='form-group'><label class='bmd-label-floating'>Your Travel Mates</label><input type='text' class='form-control'></div></div>")
+                });
+
                 $('li').arrangeable({ dragSelector: '.drag-area' });
 
                 $('nav > a').click(function () {
                     var dayValue = $(this).attr('id');
-                    var planId = $('#planId').val();
-                    $('#btnAdd').attr('onclick', "location.href= '/plan/detailPlanCreate/"+planId+"/"+dayValue+"'");
+                    console.log(dayValue);
                 });
 
 

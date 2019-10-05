@@ -10,7 +10,7 @@ router.get('/', controller.toPlan);
 
 router.post('/detailPlanShow/:userId', controller.insertPlan);
 
-router.get('/detailPlanCreate', controller.showToCreate);
+router.get('/detailPlanCreate/:planId/:dayValue', controller.showToCreate);
 
 //router.post('/detailPlanCreate', controller.)
 

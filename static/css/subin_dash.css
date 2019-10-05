@@ -16855,7 +16855,7 @@ label {
 .card.bg-warning,
 .card.card-rotate.bg-warning .back,
 .card.card-rotate.bg-warning .front {
-    background: linear-gradient(60deg, #9796f0, #fbc7d4);
+    background: #9796f0;
 }
 
 .card .card-header-danger .card-icon,

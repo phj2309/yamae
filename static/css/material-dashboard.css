@@ -1,21 +1,51 @@
 #detailViewColor .btn-primary{
   background-color: #9796f0;
-  width :26%;
+  width :27%;
   height : 40px;
   font-size:12pt;
   float: left;
-  margin: 10px;
-  
+  margin-left: 5px;
+  margin-right: 5px;
+  text-align: center;
 }
 
 #detailViewColor2{
   background-color:#9796f0;
   width :48%; 
-  font-size:14pt
+  font-size:14pt;
+  text-align: center;
+}
+
+#thead_style{
+  font-size : 10pt;
+  text-align: center;
+}
+
+.tbody_style{
+  font-size : 8.5pt;
+  text-align: center;
+
 }
 
 .card {
   font-size: .875rem;
+}
+
+.mapButton{
+  float : right;
+  border : 0px none;
+  background-color: inherit;
+  margin-left : 10px;
+  margin-right : 10px;
+}
+
+
+#mapSearch{
+  float : left;
+width : 50%;
+height : 20px;
+margin-left : 50px;
+
 }
 
 *,
@@ -411,9 +441,12 @@ template {
   }
   .table {
     border-collapse: collapse !important;
+    
+    
   }
   .table td,
   .table th {
+    font-size : 5pt;
     background-color: #fff !important;
   }
   .table-bordered th,
