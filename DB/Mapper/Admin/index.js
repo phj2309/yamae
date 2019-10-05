@@ -2,15 +2,27 @@ const sql = require('../../sql.js');
 
 module.exports = {
 
-	isUser: function(_email) {
+	isUser: function(_id) {
 		return new Promise(function(resolve, reject) {
-			var selectQuery = 'SELECT EXISTS(SELECT 1 FROM User WHERE email = ? LIMIT 1) as count';
+			var selectQuery = 'SELECT EXISTS(SELECT 1 FROM user WHERE id = ? LIMIT 1) as count';
 
-			sql.excuteParam(selectQuery, [_email]).then(function(rows) {
+			sql.excuteParam(selectQuery, [_id]).then(function(rows) {
 				if(rows[0].count == 0) // 존재하지 않음
 					resolve(false);
 				else
 					resolve(true);
+			}).catch(function(error) {
+				reject(error);
+			});
+		});
+	},
+
+	findNicknameById: function(_id){
+		return new Promise(function(resolve, reject) {
+			var selectQuery = 'SELECT nickname FROM user WHERE id = ?';
+
+			sql.excuteParam(selectQuery, [_id]).then(function(rows) {
+				resolve(rows);
 			}).catch(function(error) {
 				reject(error);
 			});
@@ -33,11 +45,11 @@ module.exports = {
 		});
 	},
 
-	createUser: function(_regKey, _email, _agency, _department, _team, _comment) {
+	createUser: function(_id, _nickname, _password, _email) {
 		return new Promise(function(resolve, reject) {
-			var insertQuery = 'INSERT INTO User (userUUID, regKey, email, agency, department, team, comment, createTime) VALUES (UNHEX(REPLACE(UUID(), \"-\", \"\")), ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)';
+			var insertQuery = 'INSERT INTO user (id, nickname, password, email) VALUES ( ?, ?, ?, ? )';
 
-			sql.excuteParam(insertQuery, [_regKey, _email, _agency, _department, _team, _comment]).then(function(rows) {
+			sql.excuteParam(insertQuery, [_id, _nickname, _password, _email]).then(function(rows) {
 				resolve(true);
 			}).catch(function(error) {
 				reject(error);

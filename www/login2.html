@@ -35,16 +35,18 @@
 
                 if (gauth.isSignedIn.get()) {
                     console.log("logined");
-                    loginBtn.value = 'LOGOUT';
+                    // loginBtn.value = 'LOGOUT';
                     var profile = gauth
                         .currentUser
                         .get()
                         .getBasicProfile();
-                    nameText.innerHTML = profile.getName() + '님 안녕하세요';
+                    // nameText.innerHTML = profile.getName() + '님 안녕하세요';   
+                    nameText = profile.getName();//db에 저장될 때 nickname에 저장
+                    var gEmail = profile.getEmail(); //db에 저장될 때 id, email에 동시저장
                 } else {
                     console.log("logouted!");
-                    loginBtn.value = 'LOGIN';
-                    nameText.innerHTML = '';
+                    // loginBtn.value = 'LOGIN';
+                    // nameText.innerHTML = '';
                 }
             }
             function init() {
@@ -191,7 +193,7 @@
                                         <h3 class="card-title">Enter Your Account</h3>
                                     </div>
                                     <div class="card-body">
-                                        <form method="POST" action="/">
+                                        <form method="POST" action="./">
                                             <div class="login-wrap">
                                                 <div class="login-html">
                                                     <input id="tab-1" type="radio" name="tab" class="sign-in" value="signin" checked="checked">
@@ -203,11 +205,11 @@
                                                         <div class="sign-in-htm">
                                                             <div class="group">
                                                                 <label for="user" class="label">ID</label>
-                                                                <input id="signin_id" type="text" class="input">
+                                                                <input name="signin_id" type="text" class="input">
                                                             </div>
                                                             <div class="group">
                                                                 <label for="pass" class="label">Password</label>
-                                                                <input id="signin_pw" type="password" class="input" data-type="password">
+                                                                <input name="signin_pw" type="password" class="input" data-type="password">
                                                             </div>
                                                             <div class="group">
                                                                 <input id="check" type="checkbox" class="check" checked="checked">
@@ -216,12 +218,17 @@
                                                                     Keep me Signed in</label>
                                                             </div>
 
-                                                            <script>
+                                                            <!-- <script>
                                                                 var signin_id = document.getElementById('signin_id');
                                                                 var signin_pw = document.getElementById('signin_pw');
-                                                                var test = document.getElementById('tab-1').checked;
+                                                                var test = '';
+                                                                if(document.getElementsByName("tab")[0].checked == true){
+                                                                    test = document.getElementsByName("tab")[0].value;
+                                                                } else if(document.getElementsByName("tab")[1].checked == true){
+                                                                    test = document.getElementsByName("tab")[1].value;
+                                                                }
                                                                 console.log(test);
-                                                            </script>
+                                                            </script> -->
 
 
 
@@ -235,9 +242,10 @@
                                                             <div class="hr"></div>
 
                                                             <!-- 구글로그인 -->
+                                                        
                                                             <div id="my-signin2"></div>
                                                             <span id="name"></span>
-                                                            <input
+                                                            <!-- <input
                                                                 type="button"
                                                                 id="loginBtn"
                                                                 value="checking..."
@@ -253,34 +261,49 @@
                                                                        checkLoginStatus();
                                                                 });
                                                                 }
-                                                            ">
+                                                            "> -->
 
                                                         </div>
                                                         <!-- 회원가입 폼 -->
                                                         <div class="sign-up-htm">
                                                             <div class="group">
                                                                 <label for="user" class="label">ID</label>
-                                                                <input id="signup_id" type="text" class="input">
+                                                                <input name="signup_id" type="text" class="input">
                                                             </div>
                                                             <div class="group">
                                                                 <label for="user" class="label">Nickname</label>
-                                                                <input id="signup_nickname" type="text" class="input">
+                                                                <input name="signup_nickname" type="text" class="input">
                                                             </div>
                                                             <div class="group">
                                                                 <label for="pass" class="label">Password</label>
-                                                                <input id="signup_pw" type="password" class="input" data-type="password">
+                                                                <input name="signup_pw" type="password" class="input" data-type="password">
                                                             </div>
                                                             <div class="group">
                                                                 <label for="pass" class="label">Repeat Password</label>
-                                                                <input id="signup_pw_repeat" type="password" class="input" data-type="password">
+                                                                <input name="signup_pw_repeat" type="password" class="input" data-type="password">
                                                             </div>
                                                             <div class="group">
                                                                 <label for="pass" class="label">Email Address</label>
-                                                                <input id="signup_email" type="text" class="input">
+                                                                <input name="signup_email" type="email" class="input">
                                                             </div>
                                                             <div class="group">
                                                                 <input type="submit" class="button" value="Sign Up">
                                                             </div>
+                                                            <!-- post일 때 controller로 전달할 값  -->
+                                                            <script>
+                                                                var signin_id = document.getElementById('signin_id');
+                                                                var signin_pw = document.getElementById('signin_pw');
+                                                                var test = '';
+                                                                if(document.getElementsByName("tab")[0].checked == true){
+                                                                    //signin
+                                                                    test = document.getElementsByName("tab")[0].value;
+                                                                } else if(document.getElementsByName("tab")[1].checked == true){
+                                                                    //signup
+                                                                    test = document.getElementsByName("tab")[1].value;
+                                                                }
+                                                                console.log(test);
+                                                            </script>
+
                                                             <div class="hr"></div>
                                                             <div class="foot-lnk">
                                                                 <label for="tab-1">Already Member?</a>
