@@ -39,5 +39,19 @@ module.exports = {
 				reject(error);
 			});
 		});
+	},
+	getNickname: function(_userId) {
+		return new Promise(function(resolve, reject) {
+			var selectQuery = 'SELECT nickname FROM tripontrip_db.user WHERE user_id = ?';
+
+			sql.excuteParam(selectQuery, [_userId ]).then(function(rows) {
+				if(rows.length == 0)
+					resolve(null);
+
+				resolve(rows);
+			}).catch(function(error) {
+				reject(error);
+			});
+		});
 	}
 }

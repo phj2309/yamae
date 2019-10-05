@@ -103,13 +103,12 @@
                 </div>
                 <div class="card-body">
                       <form action ="/plan/detailPlanShow" method="post">
-                        <input type="hidden" name="planId" value="<%= planId %>">
                         <div class="row">
                           <br /><br />
                           <div class="col-md-3">
                             <div class="form-group">
                               <label class="bmd-label-floating">Contents</label>
-                              <input type="text" name="content" value="" class="form-control">
+                              <input type="text" name="content" id="content" value="" class="form-control">
                             </div>
                           </div>
 
@@ -157,11 +156,11 @@
                           <div class="col-10">
                             <div class="form-group">
                               <label class="bmd-label-floating">Place</label>
-                              <input type="text" name="place" value="" class="form-control">
+                              <input type="text" name="place" id="place" value="" class="form-control">
                             </div>
                           </div>
                           <div>
-                            <button type="button" class="btn btn-white btn-round btn-just-icon btn-add" onClick="location.href= '/map'"
+                            <button type="button" id="toMap" class="btn btn-white btn-round btn-just-icon btn-add"
                               style="float:right;">
                               <i class="material-icons">map</i>
                             </button>
@@ -170,6 +169,8 @@
                         <br />
                         <button type="submit" class="btn btn-primary" id="detailViewColor2" style="width :100%; font-size:14pt;">save</button>
                         <div class="clearfix"></div>
+                        <input type="hidden" name="planId" id="planId" value="<%= planId %>">
+                        <input type="hidden" name="dayValue" id="dayValue" value="<%= dayValue %>">
                       </form>
                     </div>
                   </div>
@@ -227,6 +228,30 @@
   <script>
     $(document).ready(function () {
       $().ready(function () {
+
+        $('#toMap').click(function() {
+          var content = $('#content').val();
+          var sHour = $('#sHour').val();
+          var sMin = $('#sMin').val();
+          var fHour = $('#fHour').val();
+          var fMin = $('#fMin').val();
+          var planId = $('#planId').val();
+          var dayValue = $('#dayValue').val();
+
+          //console.log(content);
+
+          var allData = {"content": content, "sHour": sHour, "sMin": sMin, "fHour":fHour, "fMin": fMin, "planId": planId, "dayValue": dayValue};
+          //console.log(allData);
+          $.ajax({
+            url:'../../../../map',
+            type:'POST',
+            data: allData,
+            success:function(data){
+              console.log("success");
+            }
+
+          });
+        });
 
         $sidebar = $('.sidebar');
 

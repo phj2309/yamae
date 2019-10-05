@@ -49,6 +49,20 @@ exports.insertPlan = async function(req, res)
             });
             //console.log(nickname);
         }
+        mapper.user.getNickname(userId).then(function(result) {
+            var nickname = result[0].nickname;
+            mapper.plan.insertGroup(planId, nickname).then(function(result) {
+                console.log("insertGroup success");
+               //console.log("성공");
+            }).catch(function(error) {
+                console.log(error);
+                
+            });
+           //console.log("성공");
+        }).catch(function(error) {
+            console.log(error);
+            
+        });
         console.log("createPlan success");
         res.render("detailPlanShow.html", { day : btDay, planId : planId, title: title});
     }).catch(function(error) {
@@ -63,7 +77,14 @@ exports.showToCreate = async function(req, res)
     var dayValue = req.params.dayValue;
     console.log("show to create. planId : "+planId);
     console.log("days : "+dayValue);
-    res.render("detailPlanCreate.html", { planId : planId});
+    res.render("detailPlanCreate.html", { planId : planId, dayValue: dayValue});
+}
+
+exports.mapSubmit = async function(req, res)
+{
+   // console.log("show to create. planId : "+planId);
+   // console.log("days : "+dayValue);
+    res.render("detailPlanCreate.html");
 }
 
 exports.insertDetailPlan = async function(req, res)
@@ -92,7 +113,19 @@ exports.insertDetailPlan = async function(req, res)
          
      });
     
-}
+},
+exports.cost_test = async function (req, res) {
+    var planId = req.params.planId;
+    
+    mapper.plan.groupCount(planId).then(function(result) {
+        var count = result[0].count;
+        console.log("group count : "+count);
+        res.render("costPage.html", {count : count});
+     }).catch(function(error) {
+         console.log(error);
+         
+     });
+},
 
 
 exports.cost = async function (req, res) {

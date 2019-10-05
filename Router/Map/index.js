@@ -6,7 +6,7 @@ const controller = require('./controller');
 //const adminViewController = require('./AdminView/controller');
 
 
-router.get('/', controller.toMap);
+router.post('/', controller.toMap);
 
 // USER VIEW
 //router.get('/survey/:key', userViewController.userSwitch);
