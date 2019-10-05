@@ -110,9 +110,7 @@
                                 <div class="card-body">
                                     <form>
                                         <div class="login-wrap">
-
                                             <div class="login-html">
-
                                                 <input id="tab-1" type="radio" name="tab" class="sign-in" value="signin"
                                                     checked="checked">
                                                 <label for="tab-1" class="tab">Map View</label>
@@ -120,31 +118,48 @@
                                                 <input id="tab-2" type="radio" name="tab" class="sign-up"
                                                     value="signup">
                                                 <label for="tab-2" class="tab">List View</label>
+                                                
 
                                                 <div class="login-form">
                                                     <!-- 지도 폼 -->
                                                     <div class="sign-in-htm">
-                                                        <div id="map"></div>
+                                                    <div id="map"></div>
                                                     </div>
 
                                                     <!-- 리스트 폼 -->
-                                                    <div class="sign-up-htm">
+                                                    <div class="sign-up-htm"><br />
                                                         <div class="table-responsive">
-                                                            <br/>
+                                                            
+
                                                             <table class="table">
                                                                 <thead class="text-primary" id="thead_style">
-                                                                    <th>Num</th>
-                                                                    <th>Title</th>
-                                                                    <th>Country</th>
-                                                                    <th>Writer</th>
+                                                                    <th>Check</th>
+                                                                    <th>Contents</th>
                                                                     <th>Map</th>
                                                                 </thead>
                                                                 <tbody class="tbody_style">
                                                                     <tr>
-                                                                        <td>1</td>
-                                                                        <td>지유니네 놀러가기</td>
-                                                                        <td>라오스</td>
-                                                                        <td>11_hyeon, soubii_g</td>
+                                                                        <td>
+                                                                            <div class="form-check">
+                                                                                <label class="form-check-label">
+                                                                                    <input class="form-check-input"
+                                                                                        type="checkbox" value=""
+                                                                                        checked>
+                                                                                    <span class="form-check-sign">
+                                                                                        <span class="check"></span>
+                                                                                    </span>
+                                                                                </label>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td>
+                                                                            <ul
+                                                                                style="list-style: none; padding : 0px;">
+                                                                                <li>글티 17 라오스 탐방기</li>
+                                                                                <li>라오스</li>
+                                                                                <li>11_hyeon, soubii_g</li>
+                                                                                <li>2018-8-19 ~ 2018-8-23</li>
+                                                                            </ul>
+                                                                        </td>
                                                                         <td>
                                                                             <button type="button"
                                                                                 class="btn btn-white btn-round btn-just-icon btn-add"
@@ -153,9 +168,52 @@
                                                                             </button>
                                                                         </td>
                                                                     </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <div class="form-check">
+                                                                                <label class="form-check-label">
+                                                                                    <input class="form-check-input"
+                                                                                        type="checkbox" value=""
+                                                                                        checked>
+                                                                                    <span class="form-check-sign">
+                                                                                        <span class="check"></span>
+                                                                                    </span>
+                                                                                </label>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td>
+                                                                            <ul
+                                                                                style="list-style: none; padding : 0px;">
+                                                                                <li>지유니네 놀러가기</li>
+                                                                                <li>말레이시아</li>
+                                                                                <li>30under_juu</li>
+                                                                                <li>2019-6-30 ~ 2019-7-8</li>
+                                                                            </ul>
+                                                                        </td>
+                                                                        <td>
+                                                                            <button type="button"
+                                                                                class="btn btn-white btn-round btn-just-icon btn-add"
+                                                                                onClick="location.href= '/map'">
+                                                                                <i class='material-icons'>map</i>
+                                                                            </button>
+                                                                        </td>
+                                                                    </tr>
+
                                                                 </tbody>
                                                             </table>
                                                         </div>
+                                                        
+                                                        <button type="button" rel="tooltip" title="Remove"
+                                                            class="btn btn-danger btn-link btn-sm" style="float : right; padding: 10px;">
+                                                            <i class="material-icons">close</i>
+                                                        </button>
+                                                        <button type="button" rel="tooltip" title="Edit"
+                                                            class="btn btn-primary btn-link btn-sm" style="float : right;  padding: 10px;">
+                                                            <i class="material-icons">edit</i>
+                                                        </button>
+
+
+
                                                     </div>
                                                 </div>
                                             </div>

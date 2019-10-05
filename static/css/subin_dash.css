@@ -15,6 +15,27 @@
 
 /*     brand Colors              */
 
+.form-control2 {
+    display: inline;
+    width: auto;
+    padding: 0.4375rem 0;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: rgba(0, 0, 0, 0);
+    background-clip: padding-box;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    /*transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;*/
+  }
+
+  .form-control2::-ms-expand {
+    background-color: transparent;
+  }
+
+
+
 #detailViewColor .btn-primary {
     background-color: #9796f0;
     width: 25%;

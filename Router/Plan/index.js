@@ -14,7 +14,8 @@ router.get('/detailPlanCreate/:planId/:dayValue', controller.showToCreate);
 
 //router.post('/detailPlanCreate', controller.)
 
-router.post('/detailPlanShow', controller.insertDetailPlan)
+router.post('/detailPlanShow', controller.insertDetailPlan);
+
 
 router.get('/costPage', controller.cost);
 // USER VIEW

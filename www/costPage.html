@@ -26,19 +26,19 @@
 
 <body class="">
   <div class="wrapper ">
-    <div class="sidebar" data-color="purple" data-background-color="white" data-image="../static/img/sidebar-1.jpg">
-      <!--
-        Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
-
-        Tip 2: you can also add an image using data-image tag
-    -->
-      <div class="logo">
-        <a href="http://static.creative-tim.com" class="simple-text logo-normal">
-          Creative Tim
-        </a>
-      </div>
-    </div>
     <div class="main-panel">
+        <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+            <div class="container-fluid">
+                <div class="navbar-wrapper">
+                    <a class="navbar-brand" href="#pablo">Trip Cost</a>
+                </div>
+                <button type="button" class="mapButton">
+                    <i class="material-icons">
+                        close
+                    </i>
+                </button>
+            </div>
+        </nav>
       <!-- End Navbar -->
       <div class="content">
         <div class="container-fluid">
@@ -46,8 +46,7 @@
             <div class="col-md-8">
               <div class="card">
                 <div class="card-header card-header-primary">
-                  <h4 class="card-title">Trip Cost</h4>
-                  <p class="card-category">Cost</p>
+                  <h4 class="card-title">Enter your trip cost.</h4>
                 </div>
                 <div class="card-body">
                   <form action="detailPlanShow.html">
@@ -91,18 +90,7 @@
                     <div id="costInputArea">
 
                     </div>
-                    <div class="row">
-                      <div class="col-md-12">
-                        <div class="form-group">
-                          <label>About Me</label>
-                          <div class="form-group">
-                            <label class="bmd-label-floating"> Lamborghini Mercy, Your chick she so thirsty, I'm in that
-                              two seat Lambo.</label>
-                            <textarea class="form-control" rows="5"></textarea>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    <br/><br/>
                     <button type="submit" class="btn btn-primary pull-right">save</button>
                     <div class="clearfix"></div>
                   </form>
