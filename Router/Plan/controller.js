@@ -23,8 +23,8 @@ exports.insertPlan = async function(req, res)
 
     var btMs = finishDate.getTime() - startDate.getTime();
     var btDay = btMs/(1000*60*60*24) + 1;
-    console.log(userId, title, country, sYear, sMonth, sDay, fYear, fMonth, fDay);
-    console.log(btDay);
+  //  console.log(userId, title, country, sYear, sMonth, sDay, fYear, fMonth, fDay);
+   // console.log(btDay);
     //console.log(finishDate-startDate);
     //res.render("detailPlanShow.html");
     var i=0;
@@ -38,15 +38,15 @@ exports.insertPlan = async function(req, res)
             var nickname = req.body.mate[i];
 
             mapper.plan.insertGroup(planId, nickname).then(function(result) {
-                
-               console.log("성공");
-               // res.render("detailPlanShow.html", { day : btDay});
+                console.log("insertGroup success");
+               //console.log("성공");
             }).catch(function(error) {
                 console.log(error);
                 
             });
             //console.log(nickname);
         }
+        console.log("createPlan success");
         res.render("detailPlanShow.html", { day : btDay, planId : planId, title: title});
     }).catch(function(error) {
         console.log(error);
@@ -56,6 +56,10 @@ exports.insertPlan = async function(req, res)
 
 exports.showToCreate = async function(req, res)
 {
+    var planId = req.params.planId;
+    var dayValue = req.params.dayValue;
+    console.log("show to create. planId : "+planId);
+    console.log("days : "+dayValue);
     res.render("detailPlanCreate.html", { planId : planId});
 }
 
@@ -71,9 +75,11 @@ exports.insertDetailPlan = async function(req, res)
     startTime.setHours(sHour, sMin);
     var finishTime = new Date();
     finishTime.setHours(fHour, fMin);
+    console.log("insertDetailPlan");
+    console.log("planId : "+planId);
 
-    console.log("startTime : "+startTime);
-    console.log("finishTime : "+finishTime);
+    //console.log("startTime : "+startTime);
+   // console.log("finishTime : "+finishTime);
 
     mapper.plan.insertDetailPlan(planId, days, content, startTime, finishTime).then(function(result) {
         console.log("insertDetailPlan success");

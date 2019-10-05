@@ -109,16 +109,17 @@
                                         <div class="leftbox">
                                             <nav class="tabNav">
                                                 <%  for (var i = 1; i <= day; i++) { %>
-                                                <a href="#" id="day<%= i %>">DAY <%= i %> </a>;
+                                                <a href="#" id="day<%= i %>">DAY <%= i %> </a>
                                                 <%   } %>
                                             </nav>
                                         </div>
                                         <div class="rightbox">
                                             <form method="post">
+                                                <input type="hidden" name="planId" id="planId" value="<%= planId %>">
                                                 <div class="row">
                                                     <div class="col-md-3" id="detailViewColor">
-                                                        <button type="button" class="btn btn-primary"
-                                                            onClick="location.href= '/plan/detailPlanCreate/<%= planId %>'">
+                                                        <button type="button" class="btn btn-primary" id="btnAdd"
+                                                            onClick="location.href= '/plan/detailPlanCreate'">
                                                             <i class='material-icons'>add</i>
                                                         </button>
                                                         <button type="button" class="btn btn-primary"
@@ -157,7 +158,6 @@
                                                 <div class="clearfix"></div>
                                             </form>
                                         </div>
-                                        <div w3-include-html="./detailPlanLoop.html"></div>
                                     </div>
                                 </div>
                             </div>
@@ -218,15 +218,12 @@
         $(document).ready(function () {
             $().ready(function () {
 
-                $('#add').click(function () {
-                    $('#add_contents').append("<div class='col-12' id= 'add_contents'><div class='form-group'><label class='bmd-label-floating'>Your Travel Mates</label><input type='text' class='form-control'></div></div>")
-                });
-
                 $('li').arrangeable({ dragSelector: '.drag-area' });
 
                 $('nav > a').click(function () {
                     var dayValue = $(this).attr('id');
-                    console.log(dayValue);
+                    var planId = $('#planId').val();
+                    $('#btnAdd').attr('onclick', "location.href= '/plan/detailPlanCreate/"+planId+"/"+dayValue+"'");
                 });
 
 
