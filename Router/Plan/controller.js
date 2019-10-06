@@ -64,6 +64,8 @@ exports.insertPlan = async function(req, res)
             
         });
         console.log("createPlan success");
+        req.session.title = title;
+        req.session.day = btDay;
         res.render("detailPlanShow.html", { day : btDay, planId : planId, title: title});
     }).catch(function(error) {
         console.log(error);
@@ -75,9 +77,11 @@ exports.showToCreate = async function(req, res)
 {
     var planId = req.params.planId;
     var dayValue = req.params.dayValue;
+    var lat, lon, addressValue, keyword, content, sHour, sMin, fHour, fMin = "";
     console.log("show to create. planId : "+planId);
     console.log("days : "+dayValue);
-    res.render("detailPlanCreate.html", { planId : planId, dayValue: dayValue});
+    res.render("detailPlanCreate.html", { planId : planId, dayValue: dayValue, lat: lat, lon: lon, addressValue: addressValue, keyword: keyword,
+    content: content, sHour: sHour, sMin: sMin, fHour: fHour, fMin:fMin});
 }
 
 exports.mapSubmit = async function(req, res)
@@ -85,23 +89,35 @@ exports.mapSubmit = async function(req, res)
     var lat = req.body.lat;
     var lon = req.body.lon;
     var addressValue = req.body.addressValue;
+    var keyword = req.body.address;
+    var content = req.session.content;
+    var sHour = req.session.sHour;
+    var sMin = req.session.sMin;
+    var fHour = req.session.fHour;
+    var fMin = req.session.fMin;
     console.log("테스트 : "+req.session.dayValue);
     console.log("위도 : "+lat);
     var planId = req.session.planId;
     var dayValue = req.session.dayValue;
    // console.log("show to create. planId : "+planId);
    // console.log("days : "+dayValue);
-    res.render("detailPlanCreate.html", { planId : planId, dayValue: dayValue, lat: lat, lon: lon, addressValue: addressValue});
+    res.render("detailPlanCreate.html", { planId : planId, dayValue: dayValue, lat: lat, lon: lon, addressValue: addressValue, keyword: keyword,
+    content: content, sHour: sHour, sMin: sMin, fHour: fHour, fMin:fMin});
 }
 
 exports.insertDetailPlan = async function(req, res)
 {
-    var planId = req.body.planId;
+    var latitude = req.body.lat;
+    var longitude = req.body.lon;
+    var address = req.body.addressValue;
+    var keyword = req.body.address;
+    var planId = req.session.planId;
     var content = req.body.content;
     var sHour = req.body.sHour;
     var sMin = req.body.sMin;
     var fHour = req.body.fHour;
     var fMin = req.body.fMin;
+    var days = req.session.dayValue;
     var startTime = new Date();
     startTime.setHours(sHour, sMin);
     var finishTime = new Date();
@@ -109,12 +125,22 @@ exports.insertDetailPlan = async function(req, res)
     console.log("insertDetailPlan");
     console.log("planId : "+planId);
 
+    var title = req.session.title;
+    var day = req.session.day;
+
     //console.log("startTime : "+startTime);
    // console.log("finishTime : "+finishTime);
 
-    mapper.plan.insertDetailPlan(planId, days, content, startTime, finishTime).then(function(result) {
-        console.log("insertDetailPlan success");
-        res.render("detailPlanShow.html");
+    mapper.plan.createDetailPlan(planId, days, content, startTime, finishTime).then(function(result) {
+        console.log("createDetailPlan success");
+        var days_detail_id = result.insertId;
+        mapper.map.insertPlace(days_detail_id, address, keyword, latitude, longitude).then(function(result) {
+            console.log("insertPlace success");
+            res.render("detailPlanShow.html", {planId: planId, title: title, day: day });
+         }).catch(function(error) {
+             console.log(error);
+             
+         });
      }).catch(function(error) {
          console.log(error);
          

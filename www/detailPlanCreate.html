@@ -106,7 +106,7 @@
                           <div class="col-md-3">
                             <div class="form-group">
                               <label class="bmd-label-floating">Contents</label>
-                              <input type="text" name="content" id="content" value="" class="form-control">
+                              <input type="text" name="content" id="content" value="<%= content %>" class="form-control">
                             </div>
                           </div>
 
@@ -114,18 +114,20 @@
                             <div class="form-group">
                               <label>Start Time &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label>
                               <select name="sHour" id="sHour" class="form-control2">
-                                <script>
-                                  for (var i = 0; i <= 23; i++) {
-                                    document.write('<option value="' + i + '">' + i + '</option>');
-                                  }
-                                </script>
+                                  <% for(var i=0; i <= 23; i++) {
+                                    if(i == sHour) { %>
+                                      <option value="<%= i %>" selected><%= i %></option>
+                                  <% } else { %>
+                                    <option value="<%= i %>"><%= i %></option>
+                                    <% } } %>
                               </select> 시 &nbsp;
                               <select name="sMin" id="sMin" class="form-control2">
-                                <script>
-                                  for (i = 0; i <= 60; i = i + 5) {
-                                    document.write('<option value="' + i + '">' + i + '</option>');
-                                  }
-                                </script>
+                                  <% for(var i=0; i <= 60; i = i+5) {
+                                    if(i == sMin) { %>
+                                      <option value="<%= i %>" selected><%= i %></option>
+                                  <% } else { %>
+                                    <option value="<%= i %>"><%= i %></option>
+                                    <% } } %>
                               </select> 분
 
                             </div>
@@ -135,18 +137,22 @@
                             <div class="form-group">
                               <label>Finish Time &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label>
                               <select name="fHour" id="fHour" class="form-control2">
-                                <script>
-                                  for (var i = 0; i <= 23; i++) {
-                                    document.write('<option value="' + i + '">' + i + '</option>');
-                                  }
-                                </script>
+                                <% for(var i=0; i <= 23; i++) {
+                                  if(i == fHour) { %>
+                                    <option value="<%= i %>" selected><%= i %></option>
+                                <% } else { %>
+                                  <option value="<%= i %>"><%= i %></option>
+                                  <% } } %>
+                                
+                                
                               </select> 시 &nbsp;
                               <select name="fMin" id="fMin" class="form-control2">
-                                <script>
-                                  for (i = 0; i <= 60; i = i + 5) {
-                                    document.write('<option value="' + i + '">' + i + '</option>');
-                                  }
-                                </script>
+                                  <% for(var i=0; i <= 60; i = i+5) {
+                                    if(i == fMin) { %>
+                                      <option value="<%= i %>" selected><%= i %></option>
+                                  <% } else { %>
+                                    <option value="<%= i %>"><%= i %></option>
+                                    <% } } %>
                               </select> 분
                             </div>
                           </div>
@@ -154,7 +160,7 @@
                           <div class="col-10">
                             <div class="form-group">
                               <label class="bmd-label-floating">Place</label>
-                              <input type="text" name="place" id="place" value="" class="form-control">
+                              <input type="text" name="place" id="place" value="<%= keyword %>" class="form-control">
                             </div>
                           </div>
                           <div>
@@ -169,6 +175,10 @@
                         <div class="clearfix"></div>
                         <input type="hidden" name="planId" id="planId" value="<%= planId %>">
                         <input type="hidden" name="dayValue" id="dayValue" value="<%= dayValue %>">
+                          <input type="hidden" name="lat" id="lat" value="<%= lat %>">
+                          <input type="hidden" name="lon" id="lon" value="<%= lon %>">
+                          <input type="hidden" name="addressValue" id="addressValue" value="<%= addressValue %>">
+                          <input type="hidden" name="keyword" id="keyword" value="<%= keyword %>">
                       </form>
                     </div>
                   </div>
@@ -226,9 +236,6 @@
   <script>
     $(document).ready(function () {
       $().ready(function () {
-
-       
-
         $sidebar = $('.sidebar');
 
         $sidebar_img_container = $sidebar.find('.sidebar-background');

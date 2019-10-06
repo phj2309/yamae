@@ -2,12 +2,12 @@ const sql = require('../../sql.js');
 
 module.exports = {
 
-    insertPlace: function(_userId, _title, _startDate, _finishDate, _country) {
+    insertPlace: function(_days_detail_id, _address, _keyword, _latitude, _longitude) {
         return new Promise(function(resolve, reject) {
-			var insertQuery = 'INSERT INTO place (days_detail_id, location, address) VALUES (?, ?, ?)';
+			var insertQuery = 'INSERT INTO place (days_detail_id, address, keyword, latitude, longitude) VALUES (?, ?, ?, ?, ?)';
 
-			sql.excuteParam(insertQuery, [_userId, _title, _startDate, _finishDate, _country]).then(function(rows) {
-				resolve(rows);
+			sql.excuteParam(insertQuery, [_days_detail_id, _address, _keyword, _latitude, _longitude]).then(function(rows) {
+				resolve(true);
 			}).catch(function(error) {
 				reject(error);
 			});
