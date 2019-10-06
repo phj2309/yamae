@@ -12,12 +12,11 @@ router.post('/detailPlanShow/:userId', controller.insertPlan);
 
 router.get('/detailPlanCreate/:planId/:dayValue', controller.showToCreate);
 
-//router.post('/detailPlanCreate', controller.mapSubmit);
+router.post('/detailPlanCreate', controller.mapSubmit);
 
 router.post('/detailPlanShow', controller.insertDetailPlan);
 
-
-router.get('/costPage/:planId', controller.cost_test);
+router.get('/costPage/:planId', controller.cost);
 // USER VIEW
 //router.get('/survey/:key', userViewController.userSwitch);
 

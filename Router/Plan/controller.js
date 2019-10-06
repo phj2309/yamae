@@ -82,9 +82,16 @@ exports.showToCreate = async function(req, res)
 
 exports.mapSubmit = async function(req, res)
 {
+    var lat = req.body.lat;
+    var lon = req.body.lon;
+    var addressValue = req.body.addressValue;
+    console.log("테스트 : "+req.session.dayValue);
+    console.log("위도 : "+lat);
+    var planId = req.session.planId;
+    var dayValue = req.session.dayValue;
    // console.log("show to create. planId : "+planId);
    // console.log("days : "+dayValue);
-    res.render("detailPlanCreate.html");
+    res.render("detailPlanCreate.html", { planId : planId, dayValue: dayValue, lat: lat, lon: lon, addressValue: addressValue});
 }
 
 exports.insertDetailPlan = async function(req, res)
@@ -154,19 +161,32 @@ exports.cost = async function (req, res) {
         }
     });
 
+    var item;
+    var cost;
     mapper.plan.cost(item, cost).then(function (result) {
         console.log(result.insertItem);
 
         for (i = 0; i < req.body.cost.length; i++) {
 
-                var item = req.body.item[i];
-                var cost = req.body.cost[i];
+                item = req.body.item[i];
+                cost = req.body.cost[i];
 
                 console.log("성공");
         }
-        res.render("costPage.html", { item: item, cost: cost });
+       // res.render("costPage.html", { item: item, cost: cost });
     }).catch(function (error) {
         console.log(error);
     });
+
+    var planId = req.params.planId;
+
+    mapper.plan.groupCount(planId).then(function(result) {
+        var count = result[0].count;
+        console.log("group count : "+count);
+        res.render("costPage.html", {count : count, item: item, cost: cost});
+     }).catch(function(error) {
+         console.log(error);
+         
+     });
 
 }

@@ -54,13 +54,13 @@
                       <div class="col-4">
                         <div class="form-group">
                           <label class="bmd-label-floating">항목</label>
-                          <input type="text" name="item" class="form-control">
+                          <input type="text" name="item" value="ex)장보기" class="form-control" disabled>
                         </div>
                       </div>
                       <div class="col-4">
                         <div class="form-group">
                           <label class="bmd-label-floating">비용</label>
-                          <input type="text" name="cost" class="form-control">
+                          <input type="text" name="cost" value="ex)16540" class="form-control" disabled>
                         </div>
                       </div>
                       <button type="button" class="btn btn-white btn-round btn-just-icon" data-toggle="collapse"
@@ -69,23 +69,24 @@
                           person_outline
                         </i>
                       </button>
-                      <div class="collapse" id="collapseExample" aria-expanded="true" style>
-                        <div class="cdiv">
-                          <ul class="ks-cboxtags">
-                            <li><input type="checkbox" id="checkboxOne"
-                                value="Rainbow Dash" checked><label for="checkboxOne">현지</label></li>
-                            <li><input type="checkbox" id="checkboxTwo"
-                                value="Cotton Candy" checked><label for="checkboxTwo">현주</label></li>
-                            <li><input type="checkbox" id="checkboxThree"
-                                value="Rarity" checked><label for="checkboxThree">수빈</label></li>
-                          </ul>
-                        </div>
-                      </div>
                       <button type="button" class="btn btn-white btn-round btn-just-icon" id="btnAdd">
                         <i class="material-icons">
                           add
                         </i>
                       </button>
+                      <div class="collapse" id="collapseExample" aria-expanded="true" style>
+                        <div class="cdiv">
+                          <ul class="ks-cboxtags">
+                            <li><input type="checkbox" id="checkboxOne"
+                                value="Rainbow Dash" disabled><label for="checkboxOne">현지</label></li>
+                            <li><input type="checkbox" id="checkboxTwo"
+                                value="Cotton Candy" checked disabled><label for="checkboxTwo">현주</label></li>
+                            <li><input type="checkbox" id="checkboxThree"
+                                value="Rarity" checked disabled><label for="checkboxThree">수빈</label></li>
+                          </ul>
+                        </div>
+                      </div>
+                      
                     </div>
                     <div id="costInputArea">
 
