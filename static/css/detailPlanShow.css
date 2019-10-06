@@ -30,8 +30,8 @@ body {
       display: inline-block;
     background: #fbc7d4;
     width: 20%;
-    height : 36px;
-    vertical-align: top;
+    height : 34px;
+    vertical: center;
     float: right;
     cursor: move;
   }

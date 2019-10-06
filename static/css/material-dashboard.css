@@ -1,4 +1,4 @@
-#detailViewColor .btn-primary{
+#detailViewColor > .btn-primary{
   background-color: #9796f0;
   width :27%;
   height : 40px;
@@ -7,6 +7,14 @@
   margin-left: 5px;
   margin-right: 5px;
   text-align: center;
+}
+
+.btnStyle{
+  float: right;
+  color : #000000;
+  background-color : inherit;
+  border:0;
+  font-size : 12pt;
 }
 
 #detailViewColor2{
