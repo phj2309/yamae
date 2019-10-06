@@ -118,7 +118,7 @@
                                             </nav>
                                         </div>
                                         <div class="rightbox">
-                                            <form method="post">
+                                            <form action="/plan/detailPlanShow2/<%= dayValue %>" method="post">
                                                 <input type="hidden" name="planId" id="planId" value="<%= planId %>">
                                                 <div class="row">
                                                     <br/><br/><br/>
@@ -126,7 +126,7 @@
                                                             
                                                         <h4>Plan List
                                                             <button type="button" class="btn btn-white btn-round btn-just-icon" id="btn-add"
-                                                            style = "color: #8C8C8C; margin-left: 10px;" onClick="location.href= '/plan/detailPlanCreate/<%= planId %>/day1'">
+                                                            style = "color: #8C8C8C; margin-left: 10px;" onClick="location.href= '/plan/detailPlanCreate/<%= planId %>/<%= dayValue %>'">
                                                                 <i class="material-icons">
                                                                     add
                                                                 </i>
@@ -147,13 +147,16 @@
 
                                                         </h4>
                                                         <ul class="drag-list">
-                                                            <li><span class="title">list 1</span><span class="drag-area"></span></li>
-                                                            <li><span class="title">list 2</span><span class="drag-area"></span></li>
+                                                            <% if(locals.detailList) { 
+                                                                for(var i=0; i<detailList.length; i++) { %>
+                                                                        <li><span class="title"><%= detailList[i] %></span><span class="drag-area"></span></li>
+                                                              <%  } }%>
+                                                            
                                                         </ul>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <h4>Review</h4><textarea id="textfield" rows="5" cols="20"
+                                                            <h4>Review</h4><textarea id="textfield" name="review" value="" rows="5" cols="20"
                                                                 class="form-control"
                                                                 style="border:1px solid rgb(196, 196, 196);"></textarea>
                                                         </div>

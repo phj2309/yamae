@@ -66,7 +66,8 @@ exports.insertPlan = async function(req, res)
         console.log("createPlan success");
         req.session.title = title;
         req.session.day = btDay;
-        res.render("detailPlanShow.html", { day : btDay, planId : planId, title: title});
+        var dayValue = 'day1';
+        res.render("detailPlanShow.html", { day : btDay, planId : planId, title: title, dayValue: dayValue});
     }).catch(function(error) {
         console.log(error);
     });
@@ -136,16 +137,48 @@ exports.insertDetailPlan = async function(req, res)
         var days_detail_id = result.insertId;
         mapper.map.insertPlace(days_detail_id, address, keyword, latitude, longitude).then(function(result) {
             console.log("insertPlace success");
-            res.render("detailPlanShow.html", {planId: planId, title: title, day: day });
          }).catch(function(error) {
              console.log(error);
-             
+         });
+         mapper.plan.detailPlanList(planId, days).then(function(result) {
+            console.log("detailPlanList 호출");
+            var detailList = new Array();
+            for(var i=0; i<result.length; i++) {
+                detailList[i] = result[i].content;
+            }
+            res.render("detailPlanShow.html", {planId: planId, title: title, day: day, detailList: detailList, dayValue: days });
+         }).catch(function(error) {
+             console.log(error);
          });
      }).catch(function(error) {
          console.log(error);
          
      });
     
+},
+exports.insertReview = async function (req, res) {
+    var dayValue = req.params.dayValue;
+    var comment = req.body.review;
+
+    var title = req.session.title;
+    var day = req.session.day;
+    var planId = req.session.planId;
+    
+    mapper.plan.insertReview(dayValue, comment).then(function(result) {
+        mapper.plan.detailPlanList(planId, dayValue).then(function(result) {
+            console.log("detailPlanList 호출");
+            var detailList = new Array();
+            for(var i=0; i<result.length; i++) {
+                detailList[i] = result[i].content;
+            }
+            res.render("detailPlanShow.html", {planId: planId, title: title, day: day, detailList: detailList, dayValue: dayValue });
+         }).catch(function(error) {
+             console.log(error);
+         });
+     }).catch(function(error) {
+         console.log(error);
+         
+     });
 },
 exports.cost_test = async function (req, res) {
     var planId = req.params.planId;

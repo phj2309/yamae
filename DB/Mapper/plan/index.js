@@ -102,5 +102,30 @@ module.exports = {
 				reject(error);
 			});
 		});
+	},
+	detailPlanList: function(_planId, _days) {
+		return new Promise(function(resolve, reject) {
+			var selectQuery = 'SELECT * FROM tripontrip_db.days_detail WHERE plan_id = ? and days = ?';
+
+			sql.excuteParam(selectQuery, [_planId, _days]).then(function(rows) {
+				if(rows.length == 0)
+					resolve(null);
+
+				resolve(rows);
+			}).catch(function(error) {
+				reject(error);
+			});
+		});
+	},
+	insertReview: function(_days,_comment) {
+        return new Promise(function(resolve, reject) {
+			var insertQuery = 'INSERT INTO tripontrip_db.review (days, comment) VALUES (?, ?)';
+
+			sql.excuteParam(insertQuery, [_days, _comment]).then(function(rows) {
+				resolve(true);
+			}).catch(function(error) {
+				reject(error);
+			});
+		});
 	}
 }
