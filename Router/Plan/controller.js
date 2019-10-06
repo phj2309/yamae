@@ -165,6 +165,7 @@ exports.cost = async function (req, res) {
 
     var item = req.body.item;
     var cost = req.body.cost;
+    var country = req.body.country;
 
     request({
         url: 'https://okbfex.kbstar.com/quics?chgCompId=b028286&baseCompId=b028286&page=C015690&cc=b028286:b028286',
@@ -187,8 +188,6 @@ exports.cost = async function (req, res) {
         }
     });
 
-    var item;
-    var cost;
     mapper.plan.cost(item, cost).then(function (result) {
         console.log(result.insertItem);
 

@@ -1,4 +1,4 @@
-#detailViewColor .btn-primary{
+#detailViewColor > .btn-primary{
   background-color: #9796f0;
   width :27%;
   height : 40px;
@@ -7,6 +7,14 @@
   margin-left: 5px;
   margin-right: 5px;
   text-align: center;
+}
+
+.btnStyle{
+  float: right;
+  color : #000000;
+  background-color : inherit;
+  border:0;
+  font-size : 12pt;
 }
 
 #detailViewColor2{
@@ -2203,7 +2211,6 @@ pre code {
   border: 0;
   border-radius: 0;
   box-shadow: none;
-  /*transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;*/
 }
 
 

@@ -51,6 +51,58 @@
                 <div class="card-body">
                   <form action="plan/detailPlanShow">
                     <div class="row">
+                        <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Country &nbsp; &nbsp; &nbsp; &nbsp;</label>
+                            <select name="sYear" class="form-control2">
+                                <option value="USD(미국 달러)">USD(미국 달러)</option>
+                                <option value="JPY(일본 100 엔)">JPY(일본 엔)</option>
+                                <option value="EUR(유럽연합 유로)">EUR(유럽연합 유로)</option>
+                                <option value="GBP(영국 파운드)">GBP(영국 파운드)</option>
+                                <option value="CHF(스위스 프랑)">CHF(스위스 프랑)</option>
+                                <option value="CAD(캐나다 달러)">CAD(캐나다 달러)</option>
+                                <option value="AUD(오스트레일리아 달러)">AUD(오스트레일리아 달러)</option>
+                                <option value="NZD(뉴질랜드 달러)">NZD(뉴질랜드 달러)</option>
+                                <option value="HKD(홍콩 달러)">HKD(홍콩 달러)</option>
+                                <option value="CNY(중국 위안)">CNY(중국 위안)</option>
+                                <option value="SEK(스웨덴 크로네)">SEK(스웨덴 크로네)</option>
+                                <option value="DKK(덴마크 크로네)">DKK(덴마크 크로네)</option>
+                                <option value="NOK(노르웨이 크로네)">NOK(노르웨이 크로네)</option>
+                                <option value="SAR(사우디아라비아 리얄)">SAR(사우디아라비아 리얄)</option>
+                                <option value="KWD(쿠웨이트 디나르)">KWD(쿠웨이트 디나르)</option>
+                                <option value="BHD(바레인 디나르)">BHD(바레인 디나르)</option>
+                                <option value="AED(아랍에미리트 디르함)">AED(아랍에미리트 디르함)</option>
+                                <option value="THB(태국 바트)">THB(태국 바트)</option>
+                                <option value="SGD(싱가포르 달러)">SGD(싱가포르 달러)</option>
+                                <option value="IDR(인도네시아 100 루피아)">IDR(인도네시아 루피아)</option>
+                                <option value="ZAR(남아프리카공화국 랜드)">ZAR(남아프리카공화국 랜드)</option>
+                                <option value="RUB(러시아 루블)">RUB(러시아 루블)</option>
+                                <option value="HUF(헝가리 포린트)">HUF(헝가리 포린트)</option>
+                                <option value="PLN(폴란드 즐로티)">PLN(폴란드 즐로티)</option>
+                                <option value="INR(인도 루피)">INR(인도 루피)</option>
+                                <option value="MYR(말레이시아 링깃)">MYR(말레이시아 링깃)</option>
+                                <option value="PKR(파키스탄 루피)">PKR(파키스탄 루피)</option>
+                                <option value="BDT(방글라데시 타카)">BDT(방글라데시 타카)</option>
+                                <option value="PHP(필리핀 페소)">PHP(필리핀 페소)</option>
+                                <option value="EGP(이집트 파운드)">EGP(이집트 파운드)</option>
+                                <option value="MXN(멕시코 페소)">MXN(멕시코 페소)</option>
+                                <option value="BRL(브라질 리얄)">BRL(브라질 리얄)</option>
+                                <option value="BND(브루나이 달러)">BND(브루나이 달러)</option>
+                                <option value="TWD(타이완 달러)">TWD(타이완 달러)</option>
+                                <option value="ILS(이스라엘 세켈)">ILS(이스라엘 세켈)</option>
+                                <option value="JOD(요르단 디나르)">JOD(요르단 디나르)</option>
+                                <option value="VND(베트남 100 동)">VND(베트남 동)</option>
+                                <option value="KZT(카자흐스탄 텡게)">KZT(카자흐스탄 텡게)</option>
+                                <option value="TRY(터키 리라)">TRY(터키 리라)</option>
+                                <option value="CZK(체코 코루나)">CZK(체코 코루나)</option>
+                                <option value="MNT(몽골 터그럭)">MNT(몽골 터그럭)</option>
+                                <option value="QAR(카타르 리알)">QAR(카타르 리알)</option>
+
+                            </select>
+                        </div>
+                        <br/>
+                      </div>
+                      
                       <div class="col-4">
                         <div class="form-group">
                           <label class="bmd-label-floating">항목</label>
@@ -91,7 +143,7 @@
                     <div id="costInputArea">
 
                     </div>
-                    <br/><br/>
+                    <br/>
                     <button type="submit" class="btn btn-primary pull-right">save</button>
                     <div class="clearfix"></div>
                     <input type="hidden" id="count" value="<%= count %>">
