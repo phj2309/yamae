@@ -6,6 +6,18 @@ body {
     user-select: none;
   }
   
+  .textarea{
+    border : 1px solid;
+    border-radius : 20px;
+    border-color: #9796f0;
+    background-color: inherit;
+  }
+
+  .heart {
+    font-size: 25px;
+    color:#fbc7d4;
+  }
+
   .drag-list {
     width: 100%;
     margin: 0 auto;
@@ -15,6 +27,7 @@ body {
     list-style: none;
     background: rgb(255, 255, 255);
     border: 1px solid rgb(196, 196, 196);
+    border-radius : 10px;
     margin: 5px 0;
     font-size: 24px;
   }
@@ -26,12 +39,20 @@ body {
     vertical-align: top;    
   }
 
+  .drag-list .item {
+    display: inline-block;
+    width: 80%;
+    padding: 6px 6px 6px 12px;
+    vertical-align: top;    
+  }
+
   .drag-list .drag-area {
       display: inline-block;
     background: #fbc7d4;
     width: 20%;
     height : 34px;
-    vertical: center;
+    vertical-align: top;
     float: right;
     cursor: move;
+    border-radius : 10px;
   }
