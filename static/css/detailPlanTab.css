@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito:400,900|Montserrat|Roboto');
 
+.selected{
+  color:black;
+}
+
 .container {
   background: #FFFFFF;
   height: 76vh;
