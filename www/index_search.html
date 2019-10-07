@@ -6,7 +6,8 @@
         <link rel="apple-touch-icon" sizes="76x76" href="../static/img/apple-icon.png">
         <link rel="icon" type="image/png" href="../static/img/favicon.png">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-        <title>Trip On Trip
+        <title>
+                Trip On Trip
         </title>
         <meta
             content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
@@ -71,8 +72,7 @@
                                 aria-haspopup="true"
                                 aria-expanded="false">
                                 <i class="material-icons">person</i>
-                                <p><%= nickname %></p>
-                                
+                                <p>User</p>
                                 <!-- <p class="d-lg-none d-md-block"> User Profile </p> -->
                             </a>
                             <div
@@ -81,11 +81,7 @@
                                 <a class="dropdown-item" href="./costPage">Profile</a>
                                 <a class="dropdown-item" href="#">Settings</a>
                                 <div class="dropdown-divider"></div>
-                                <% if(nickname == 'User'){ %>
-                                    <a class="dropdown-item" href="./user/login">Log In</a>
-                                <% } else { %>
-                                    <a class="dropdown-item" href="./user/logout">Log Out</a>
-                                <% } %>
+                                <a class="dropdown-item" href="./user">Log In</a>
                             </div>
                         </li>
                     </ul>
@@ -116,7 +112,7 @@
 
                         <div>
 
-                            <form class="form2" style= "margin-left:30px;">
+                            <form class="form2">
                                 <!-- 드롭다운 추가 -->
                                 <div class="dropdown" style="display: inline-block;">
                                     <a
@@ -132,16 +128,21 @@
                                         <span class="caret"></span>
                                     </a>
                                     <div id="test" class="collapse">
-                                        <ul class="dropdown-menu dropdown-menu" role="menu" aria-labelledby="dLabel" style="display: block;">
+                                        <ul
+                                            class="dropdown-menu dropdown-menu-right"
+                                            role="menu"
+                                            aria-labelledby="dLabel"
+                                            style="display: block;">
+                                            
                                             <li>
                                                 <a href="#" class="dropdown-item">PLACE</a>
-                                            </li>                                            
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="input-group no-border">
-                                    <input type="text" value="" class="form-control" placeholder="Search...">
-                                    <nbsp;>
+                                    <input type="text" value="라오스" class="form-control">
+                                    
                                     <button type="submit" class="btn btn-white btn-round btn-just-icon">
                                         <i class="material-icons">search</i>
                                         <div class="ripple-container"></div>
@@ -152,35 +153,11 @@
                         </div>
                     </div>
                 </nav>
-            </br>
+
                 <!-- End Navbar 피드 들어가는 공간-->
                 <div class="content">
-                    <div class="container-fluid"  style="margin-top: -10px;">
+                    <div class="container-fluid">
                         <div class="row">
-                                
-                                    <div class="col-12 col-sm-6 col-lg-4">
-                                        <div class="card">
-                                            <div class="card-header card-header-warning">
-                                                <h3 class="card-title">지유니네 놀러가기</h4>
-                                                <p class="card-category">2019-6-30 ~ 2019-7-4</p>
-                                            </div>
-                                            <div class="card-body table-responsive">
-                                                <div class="card-category">
-                                                    <img
-                                                        src="../static/img/mal.jpg"
-                                                        style="width: 100%; height: 300px;"
-                                                        alt="trip_review_image"/>
-                                                   
-                                                </div>
-                                            </div>
-                                            <div class="card-footer">
-                                                <div class="stats">
-                                                    <i class="material-icons">local_offer</i>
-                                                    30under_juu, Zyoon2_da
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                     <div class="col-12 col-sm-6 col-lg-4">
                                         <div class="card">
                                             <div class="card-header card-header-warning">
@@ -204,7 +181,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                
                             
                             
                         </div>

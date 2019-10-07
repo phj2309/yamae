@@ -103,36 +103,47 @@
                         <div class="col-md-8">
                             <div class="card">
                                 <div class="card-header card-header-primary">
-                                    <h3 class="card-title"><%= title %>
+                                    <h3 class="card-title">지유니네 놀러가기
                                     </h3>
                                 </div>
                                 <div class="card-body">
                                     <div class="container">
                                         <div class="leftbox">
                                             <nav class="tabNav">
-                                                <%  for (var i = 1; i <= day; i++) { %>
-                                                <a href="#" id="day<%= i %>">DAY <%= i %> </a>
-                                                <%   } %>
+                                                <a href="#" id="day1" style="color:black;">DAY 1</a>
+                                                <a href="#" id="day2">DAY 2</a>
+                                                <a href="#" id="day3">DAY 3</a>
+                                                <a href="#" id="day4">DAY 4</a>
+                                                <a href="#" id="day5">DAY 5</a>
                                             </nav>
                                         </div>
                                         <div class="rightbox">
                                             <form method="post">
-                                                <input type="hidden" name="planId" id="planId" value="<%= planId %>">
+                                                <input type="hidden" name="planId" id="planId">
                                                 <div class="row">
                                                     <br/><br/><br/>
                                                     <div class="col-md-3">
                                                             
                                                         <h4>Plan List</h4>
 
+                                                        <style>
+                                                            .time{
+                                                                font-size :7pt;
+                                                            }
+                                                        </style>
+
                                                         <ul class="drag-list">
-                                                            <li><span class="item">list 1</span><span><i class="heart fa fa-heart-o"></i></span></li>
-                                                            <li><span class="item">list 2</span><span><i class="heart fa fa-heart-o"></i></span></li>
+                                                            <li><span class="item">자전거 산책, 점심<p class ="time">09:00 ~ 12:00</p></span><span style="float:center;"><i class="heart fa fa-heart-o"></i></span></li>
+                                                            <li><span class="item">블루모스크<p class ="time">13:00 ~ 13:40</p></span><span><i class="heart fa fa-heart-o"></i></span></li>                                                            
+                                                            <li><span class="item">야시장 구경<p class ="time">18:00 ~ 19:00</p></span><span><i class="heart fa fa-heart-o"></i></span></li>
+                                                            <li><span class="item">호텔 이동<p class ="time">20:00 ~ 20:30</p></span><span><i class="heart fa fa-heart-o"></i></span></li>
+                                                            <li><span class="item">호텔 수영장 이용<p class ="time">20:30 ~ 21:00</p></span><span><i class="heart fa fa-heart-o"></i></span></li>
                                                         </ul>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <h4>Review</h4>
-                                                            <textarea id="textfield" rows="5" cols="20" class="textarea" disabled></textarea>
+                                                            <textarea id="textfield" rows="5" cols="25" class="textarea" disabled>여행 첫날이었기 때문에 여유롭게 일정을 즐겼다. 블루모스크는 들어갈 수 없어서 아쉬웠고, 예정 시간보다 더 일정이 일찍 끝났다.</textarea>
                                                         </div>
                                                     </div>
                                                 </div>

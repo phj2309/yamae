@@ -17,10 +17,13 @@ function addCost(i, count, c) {
         tagList += '<i class="material-icons">'+"person_outline"+'</i></button>';
         tagList += '<div class="collapse" id="'+collapseExample+'" aria-expanded="true" style>';
         tagList += '<div class="cdiv"><ul class="ks-cboxtags">';
-        for(var j=0; j<count; j++) {
-            tagList += '<li><input type="checkbox" id="'+checkbox+c+'" value="Rainbow Dash" checked><label for="'+checkbox+c+'">'+user+'</label></li>';
-            c++;
-        }
+       
+
+        
+        tagList += '<li><input type="checkbox" id="checkbox1" value="Rainbow Dash" checked><label for="checkbox1">30under_juu</label></li>';
+        tagList +=   '<li><input type="checkbox" id="checkbox2" value="Rainbow Dash" checked><label for="checkbox2">Zyoon2_da</label></li>';
+        tagList +=   '<li><input type="checkbox" id="checkbox3" value="Rainbow Dash" checked><label for="checkbox3">soubii424</label></li>';
+
         tagList += '</ul></div></div></div></div>';
 
         $('#costInputArea').append(tagList);

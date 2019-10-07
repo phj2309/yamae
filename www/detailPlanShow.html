@@ -27,6 +27,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <!--data-image="\static\img\sidebar-1.jpg"  -->
+
 <body class="">
     <div class="wrapper ">
         <div class="sidebar" data-color="purple" data-background-color="white">
@@ -107,58 +108,67 @@
                                     <div class="container">
                                         <div class="leftbox">
                                             <nav class="tabNav">
-                                                <%  for (var i = 1; i <= day; i++) { %>
+                                                <%  for (var i = 1; i <= day; i++) {if(i==1) {%>
+                                                <a href="#" id="day<%= i %>" style="color:black;">DAY <%= i %> </a> <% } else { %>
                                                 <a href="#" id="day<%= i %>">DAY <%= i %> </a>
-                                                <%   } %>
-                                            </nav>
+                                                <%  } } %>
                                         </div>
                                         <div class="rightbox">
                                             <form action="/plan/detailPlanShow2" method="post">
                                                 <input type="hidden" name="planId" id="planId" value="<%= planId %>">
                                                 <div class="row">
-                                                    <br/><br/><br/>
+                                                    <br /><br /><br />
                                                     <div class="col-md-3">
-                                                            
+
                                                         <h4>Plan List
-                                                            <button type="button" class="btn btn-white btn-round btn-just-icon" id="btnAdd"
-                                                            style = "color: #8C8C8C; margin-left: 10px;" onClick="location.href= '/plan/detailPlanCreate/<%= planId %>/<%= fdayValue %>'">
+                                                            <button type="button"
+                                                                class="btn btn-white btn-round btn-just-icon"
+                                                                id="btnAdd" style="color: #8C8C8C; margin-left: 10px;"
+                                                                onClick="location.href= '/plan/detailPlanCreate/<%= planId %>/<%= fdayValue %>'">
                                                                 <i class="material-icons">
                                                                     add
                                                                 </i>
                                                             </button>
-                                                            <button type="button" class="btn btn-white btn-round btn-just-icon"
-                                                            style = "color: #8C8C8C;  margin-left: 5px;" onClick="location.href='/plan/costPage/<%= planId %>'">
+                                                            <button type="button"
+                                                                class="btn btn-white btn-round btn-just-icon"
+                                                                style="color: #8C8C8C;  margin-left: 5px;"
+                                                                onClick="location.href='/plan/costPage/<%= planId %>'">
                                                                 <i class="material-icons">
                                                                     favorite
                                                                 </i>
                                                             </button>
-                                                                <button type="button" class="btn btn-white btn-round btn-just-icon"
-                                                                onClick="location.href='/plan/costPage/<%= planId %>'"  style="color : #8C8C8C; margin-left: 5px;">
-                                                                    <i class="material-icons">attach_money</i>
-                                                                </button>
-                                                            
+                                                            <button type="button"
+                                                                class="btn btn-white btn-round btn-just-icon"
+                                                                onClick="location.href='/plan/costPage/<%= planId %>'"
+                                                                style="color : #8C8C8C; margin-left: 5px;">
+                                                                <i class="material-icons">attach_money</i>
+                                                            </button>
+
                                                         </h4>
                                                         <ul class="drag-list">
                                                             <% if(locals.detailList) { 
                                                                 for(var i=0; i<detailList.length; i++) { %>
-                                                                        <li><span class="title"><%= detailList[i] %></span><span class="drag-area"></span></li>
-                                                              <%  } }%>
-                                                            
+                                                            <li><span class="title"><%= detailList[i] %></span><span
+                                                                    class="drag-area"></span></li>
+                                                            <%  } }%>
+
                                                         </ul>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <h4>Review</h4><textarea id="textfield" name="review" rows="5" cols="20"
-                                                                class="form-control"
+                                                            <h4>Review</h4><textarea id="textfield" name="review"
+                                                                rows="5" cols="20" class="form-control"
                                                                 style="border:1px solid rgb(196, 196, 196);"><% if(locals.review) { %><%= review %><% } %></textarea>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <br />
 
-                                                <button type="button" class="btn btn-primary" id="detailViewColor2">Delete</button>
+                                                <button type="button" class="btn btn-primary"
+                                                    id="detailViewColor2">Delete</button>
 
-                                                <button type="submit" class="btn btn-primary" id="detailViewColor2">Save</button>
+                                                <button type="submit" class="btn btn-primary"
+                                                    id="detailViewColor2">Save</button>
                                                 <div class="clearfix"></div>
                                             </form>
                                         </div>
@@ -229,9 +239,9 @@
                 $('nav > a').click(function () {
                     var cdayValue = $(this).attr('id');
                     var planId = $('#planId').val();
-                    $('#btnAdd').attr('onclick', "location.href= '/plan/detailPlanCreate/"+planId+"/"+cdayValue+"'");
+                    $('#btnAdd').attr('onclick', "location.href= '/plan/detailPlanCreate/" + planId + "/" + cdayValue + "'");
                 });
-                    
+
                 $(document).ready(function () {
                     var jbOffset = $('.jbMenu').offset();
                     $(window).scroll(function () {
