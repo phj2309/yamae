@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="utf-8" />
-    <link rel="apple-touch-icon" sizes="76x76" href="../static/img/apple-icon.png">
-    <link rel="shortcut icon" type="image/png" href="../static/img/favicon.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="\static\img\apple-icon.png">
+    <link rel="icon" type="image/png" href="\static\img\favicon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>
         Trip ON Trip
@@ -16,48 +16,45 @@
         href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <!-- CSS Files -->
-    <link href="../static/css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
+    <link href="\static\css\material-dashboard.css?v=2.1.1" rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link href="../static/demo/demo.css" rel="stylesheet" />
+    <link href="\static\demo\demo.css" rel="stylesheet" />
+    <link href="\static\css\detailPlanTab.css" rel="stylesheet" />
+    <link href="\static\css\detailPlanShow.css" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
-
+<!--data-image="\static\img\sidebar-1.jpg"  -->
 <body class="">
     <div class="wrapper ">
-        <div class="sidebar" data-color="purple" data-background-color="white" data-image="../static/img/sidebar-1.jpg">
-            <!--
-          Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
-
-          Tip 2: you can also add an image using data-image tag
-      -->
+        <div class="sidebar" data-color="purple" data-background-color="white">
             <div class="logo">
-                <a class="simple-text logo-normal" href="./">
-                    Trip ON Trip
-                </a>
+                <a class="simple-text logo-normal" href="/"> Trip ON Trip </a>
             </div>
             <div class="sidebar-wrapper">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="./">
+                        <a class="nav-link" href="/">
                             <i class="material-icons">home</i>
                             <p>HOME</p>
                         </a>
                     </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="./plan">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/plan">
                             <i class="material-icons">flight_takeoff</i>
                             <p>PLAN</p>
                         </a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="./expense">
+                        <a class="nav-link" href="/expense">
                             <i class="material-icons">attach_money</i>
                             <p>Expense</p>
                         </a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="./favoritePlan">
+                        <a class="nav-link" href="/favoritePlan">
                             <i class="material-icons">favorite</i>
                             <p>Favorite Plan</p>
                         </a>
@@ -85,7 +82,7 @@
             <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
                 <div class="container-fluid">
                     <div class="navbar-wrapper">
-                        <a class="navbar-brand" href="#pablo">Edit Profile</a>
+                        <a class="navbar-brand" href="#pablo">DETAILS PLAN</a>
                     </div>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -104,104 +101,147 @@
                         <div class="col-md-8">
                             <div class="card">
                                 <div class="card-header card-header-primary">
-                                    <h4 class="card-title"> You can only change your password and email.</h4>
+                                    <h3 class="card-title"> <%= title %> </h3>
                                 </div>
                                 <div class="card-body">
-                                    <form>
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <div class="form-group">
-                                                    <label class="bmd-label-floating">ID</label>
-                                                    <input type="text" class="form-control" disabled>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="form-group">
-                                                    <label class="bmd-label-floating">Nickname</label>
-                                                    <input type="text" class="form-control" disabled>
-                                                </div>
-                                            </div>
+                                    <div class="container">
+                                        <div class="leftbox">
+                                            <nav class="tabNav">
+                                                <%  for (var i = 1; i <= day; i++) { %>
+                                                <a href="#" id="day<%= i %>">DAY <%= i %> </a>
+                                                <%   } %>
+                                            </nav>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <div class="form-group">
-                                                    <label class="bmd-label-floating">Password</label>
-                                                    <input type="email" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <label class="bmd-label-floating">Email Address</label>
-                                                        <input type="email" class="form-control">
+                                        <div class="rightbox">
+                                            <form action="/plan/detailPlanShow2" method="post">
+                                                <input type="hidden" name="planId" id="planId" value="<%= planId %>">
+                                                <div class="row">
+                                                    <br/><br/><br/>
+                                                    <div class="col-md-3">
+                                                            
+                                                        <h4>Plan List
+                                                            <button type="button" class="btn btn-white btn-round btn-just-icon" id="btnAdd"
+                                                            style = "color: #8C8C8C; margin-left: 10px;" onClick="location.href= '/plan/detailPlanCreate/<%= planId %>/<%= fdayValue %>'">
+                                                                <i class="material-icons">
+                                                                    add
+                                                                </i>
+                                                            </button>
+                                                            <button type="button" class="btn btn-white btn-round btn-just-icon"
+                                                            style = "color: #8C8C8C;  margin-left: 5px;" onClick="location.href='/plan/costPage/<%= planId %>'">
+                                                                <i class="material-icons">
+                                                                    favorite
+                                                                </i>
+                                                            </button>
+                                                                <button type="button" class="btn btn-white btn-round btn-just-icon"
+                                                                onClick="location.href='/plan/costPage/<%= planId %>'"  style="color : #8C8C8C; margin-left: 5px;">
+                                                                    <i class="material-icons">attach_money</i>
+                                                                </button>
+                                                            
+                                                        </h4>
+                                                        <ul class="drag-list">
+                                                            <% if(locals.detailList) { 
+                                                                for(var i=0; i<detailList.length; i++) { %>
+                                                                        <li><span class="title"><%= detailList[i] %></span><span class="drag-area"></span></li>
+                                                              <%  } }%>
+                                                            
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <h4>Review</h4><textarea id="textfield" name="review" rows="5" cols="20"
+                                                                class="form-control"
+                                                                style="border:1px solid rgb(196, 196, 196);"><% if(locals.review) { %><%= review %><% } %></textarea>
+                                                        </div>
                                                     </div>
                                                 </div>
+                                                <br />
+
+                                                <button type="button" class="btn btn-primary" id="detailViewColor2">Delete</button>
+
+                                                <button type="submit" class="btn btn-primary" id="detailViewColor2">Save</button>
+                                                <div class="clearfix"></div>
+                                            </form>
                                         </div>
-                                       
-                                        <button type="submit" class="btn btn-primary pull-right" id="costButton">Update Profile</button>
-                                        <div class="clearfix"></div>
-                                    </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
+
     <!--   Core JS Files   -->
-    <script src="../static/js/core/jquery.min.js"></script>
-    <script src="../static/js/core/popper.min.js"></script>
-    <script src="../static/js/core/bootstrap-material-design.min.js"></script>
-    <script src="../static/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+    <script src="\static\js\core\jquery.min.js"></script>
+    <script src="\static\js\core\popper.min.js"></script>
+    <script src="\static\js\core\bootstrap-material-design.min.js"></script>
+    <script src="\static\js\plugins\perfect-scrollbar.jquery.min.js"></script>
     <!-- Plugin for the momentJs  -->
-    <script src="../static/js/plugins/moment.min.js"></script>
+    <script src="\static\js\plugins\moment.min.js"></script>
     <!--  Plugin for Sweet Alert -->
-    <script src="../static/js/plugins/sweetalert2.js"></script>
+    <script src="\static\js\plugins\sweetalert2.js"></script>
     <!-- Forms Validations Plugin -->
-    <script src="../static/js/plugins/jquery.validate.min.js"></script>
+    <script src="\static\js\plugins\jquery.validate.min.js"></script>
     <!-- Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
-    <script src="../static/js/plugins/jquery.bootstrap-wizard.js"></script>
+    <script src="\static\js\plugins\jquery.bootstrap-wizard.js"></script>
     <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
-    <script src="../static/js/plugins/bootstrap-selectpicker.js"></script>
+    <script src="\static\js\plugins\bootstrap-selectpicker.js"></script>
     <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
-    <script src="../static/js/plugins/bootstrap-datetimepicker.min.js"></script>
+    <script src="\static\js\plugins\bootstrap-datetimepicker.min.js"></script>
     <!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
-    <script src="../static/js/plugins/jquery.dataTables.min.js"></script>
+    <script src="\static\js\plugins\jquery.dataTables.min.js"></script>
     <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
-    <script src="../static/js/plugins/bootstrap-tagsinput.js"></script>
-    <!-- Plugin for Fileupload, full documentation here: http://static.jasny.net/bootstrap/javascript/#fileinput -->
-    <script src="../static/js/plugins/jasny-bootstrap.min.js"></script>
+    <script src="\static\js\plugins\bootstrap-tagsinput.js"></script>
+    <!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
+    <script src="\static\js\plugins\jasny-bootstrap.min.js"></script>
     <!--  Full Calendar Plugin, full documentation here: https://github.com/fullcalendar/fullcalendar    -->
-    <script src="../static/js/plugins/fullcalendar.min.js"></script>
+    <script src="\static\js\plugins\fullcalendar.min.js"></script>
     <!-- Vector Map plugin, full documentation here: http://jvectormap.com/documentation/ -->
-    <script src="../static/js/plugins/jquery-jvectormap.js"></script>
+    <script src="\static\js\plugins\jquery-jvectormap.js"></script>
     <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-    <script src="../static/js/plugins/nouislider.min.js"></script>
+    <script src="\static\js\plugins\nouislider.min.js"></script>
     <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support SweetAlert -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
     <!-- Library for adding dinamically elements -->
-    <script src="../static/js/plugins/arrive.min.js"></script>
-    <!--  Google Maps Plugin <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>   -->
-
+    <script src="\static\js\plugins\arrive.min.js"></script>
+    <!--  Google Maps Plugin    -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
     <!-- Chartist JS -->
-    <script src="../static/js/plugins/chartist.min.js"></script>
+    <script src="\static\js\plugins\chartist.min.js"></script>
     <!--  Notifications Plugin    -->
-    <script src="../static/js/plugins/bootstrap-notify.js"></script>
+    <script src="\static\js\plugins\bootstrap-notify.js"></script>
     <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="../static/js/material-dashboard.js?v=2.1.1" type="text/javascript"></script>
+    <script src="\static\js\material-dashboard.js?v=2.1.1" type="text/javascript"></script>
     <!-- Material Dashboard DEMO methods, don't include it in your project! -->
-    <script src="../static/demo/demo.js"></script>
+    <!-- <script src="\static\demo\demo.js"></script> -->
+    <script type="text/javascript" src="\static\js\drag-arrange.js"></script>
+    <script type="text/javascript" src="\static\js\drag-arrange.min.js"></script>
+    <!-- <script src="http://code.jquery.com/jquery-latest.js"></script>     -->
     <script>
+
         $(document).ready(function () {
             $().ready(function () {
 
-                var travelMate = 1;
-
-                $('#add').click(function () {
-                    $('#add_contents').append("<div class='col-12' id= 'add_contents'><div class='form-group'><label class='bmd-label-floating'>Your Travel Mates</label><input type='text' class='form-control' name='mate[]'></div></div>")
-                    travelMate++;
+                $('li').arrangeable({ dragSelector: '.drag-area' });
+                //a태그 클릭하면 폼태그에 있는 값, 리스트 값 다 없어지고 그 태그에 맞는 리스트랑 폼태그 값 가져와야함
+                $('nav > a').click(function () {
+                    var cdayValue = $(this).attr('id');
+                    var planId = $('#planId').val();
+                    $('#btnAdd').attr('onclick', "location.href= '/plan/detailPlanCreate/"+planId+"/"+cdayValue+"'");
+                });
+                    
+                $(document).ready(function () {
+                    var jbOffset = $('.jbMenu').offset();
+                    $(window).scroll(function () {
+                        if ($(document).scrollTop() > jbOffset.top) {
+                            $('.jbMenu').addClass('jbFixed');
+                        }
+                        else {
+                            $('.jbMenu').removeClass('jbFixed');
+                        }
+                    });
                 });
 
                 $sidebar = $('.sidebar');
