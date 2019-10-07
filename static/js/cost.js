@@ -20,9 +20,12 @@ function addCost(i, count, c) {
        
 
         
-        tagList += '<li><input type="checkbox" id="checkbox1" value="Rainbow Dash" checked><label for="checkbox1">30under_juu</label></li>';
-        tagList +=   '<li><input type="checkbox" id="checkbox2" value="Rainbow Dash" checked><label for="checkbox2">Zyoon2_da</label></li>';
-        tagList +=   '<li><input type="checkbox" id="checkbox3" value="Rainbow Dash" checked><label for="checkbox3">soubii424</label></li>';
+        tagList += '<li><input type="checkbox" id="'+checkbox+c+'" value="Rainbow Dash" checked><label for="'+checkbox+c+'">30under_juu</label></li>';
+        c++;
+        tagList +=   '<li><input type="checkbox" id="'+checkbox+c+'" value="Rainbow Dash" checked><label for="'+checkbox+c+'">Zyoon2_da</label></li>';
+        c++;
+        tagList +=   '<li><input type="checkbox" id="'+checkbox+c+'" value="Rainbow Dash" checked><label for="'+checkbox+c+'">soubii424</label></li>';
+        c++;
 
         tagList += '</ul></div></div></div></div>';
 

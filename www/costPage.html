@@ -49,7 +49,7 @@
                   <h4 class="card-title">Enter your trip cost.</h4>
                 </div>
                 <div class="card-body">
-                  <form action="plan/detailPlanShow">
+                  <form action="/detailPlanShow_2_nd">
                     <div class="row">
                         <div class="col-md-3">
                         <div class="form-group">
@@ -146,7 +146,7 @@
                     <br/>
                     <button type="submit" class="btn btn-primary pull-right">save</button>
                     <div class="clearfix"></div>
-                    <input type="hidden" id="count" value="<%= count %>">
+                    <input type="hidden" id="count" value="">
                   </form>
                 </div>
               </div>
@@ -222,7 +222,7 @@
           }
 
         }
-        var count = $('#count').val();
+        var count = 3;
         var i = 0;
         var c = 0;
         $('#btnAdd').click(function () {
