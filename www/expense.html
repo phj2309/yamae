@@ -114,6 +114,18 @@
                                     <h3 class="card-title">My travel cost</h3>
                                 </div>
                                 <div class="card-body">
+                                    <br/>
+                                    <label style = "color:black; width:100%; font-size: 20pt; text-align:center;">
+                                        
+                                        글티 17 라오스 탐방기
+                                    </label>
+                                    <label style = "color:rgb(44, 42, 42); width:100%; font-size: 8pt; text-align:center; margin-top:10px;">
+                                        
+                                            30under_juu : 21,428 <br/>
+                                            Zyoon2_da : 0<br/>
+                                            soubii_g : 21,428<br/>
+                                            Public Money : 28,571<br/>
+                                        </label>
                                         <script>
                                                 am4core.ready(function () {
                                         
@@ -125,60 +137,19 @@
                                              * Define data for each year
                                              */
                                                     var chartData = {
-                                                        "2018": [
+                                                        "글티 17 라오스 탐방기": [
                                                             {
-                                                                "sector": "현주",
-                                                                "size": 26.6
-                                                            }, {
-                                                                "sector": "현지",
-                                                                "size": 10.6
-                                                            }, {
-                                                                "sector": "수빈",
-                                                                "size": 23.2
-                                                            }, {
-                                                                "sector": "지윤",
-                                                                "size": 12.2
-                                                            }, {
-                                                                "sector": "공금",
-                                                                "size": 27.4
-                                                            }
-                                                        ],
-                                        
-                                                        "2019": [
-                                                            {
-                                                                "sector": "현주",
+                                                                "sector": "30under_juu",
                                                                 "size": 30
                                                             }, {
-                                                                "sector": "현지",
-                                                                "size": 10
+                                                                "sector": "Zyoon2_da",
+                                                                "size": 0
                                                             }, {
-                                                                "sector": "수빈",
-                                                                "size": 20
-                                                            }, {
-                                                                "sector": "지윤",
-                                                                "size": 10
-                                                            }, {
-                                                                "sector": "공금",
-                                                                "size": 30
-                                                            }
-                                                        ],
-                                                        
-                                                        "2020": [
-                                                            {
-                                                                "sector": "현주",
-                                                                "size": 10
-                                                            }, {
-                                                                "sector": "현지",
+                                                                "sector": "soubii_g",
                                                                 "size": 30
                                                             }, {
-                                                                "sector": "수빈",
-                                                                "size": 5
-                                                            }, {
-                                                                "sector": "지윤",
-                                                                "size": 25
-                                                            }, {
-                                                                "sector": "공금",
-                                                                "size": 30
+                                                                "sector": "Public Money",
+                                                                "size": 40
                                                             }
                                                         ]
                                                     };
@@ -190,31 +161,28 @@
                                                     // Add data
                                                     chart.data = [
                                                     {
-                                                                "sector": "현주",
-                                                                "size": 26.6
+                                                                "sector": "30under_juu",
+                                                                "size": 30
                                                             }, {
-                                                                "sector": "현지",
-                                                                "size": 10.6
+                                                                "sector": "Zyoon2_da",
+                                                                "size": 0
                                                             }, {
-                                                                "sector": "수빈",
-                                                                "size": 23.2
+                                                                "sector": "soubii_g",
+                                                                "size": 30
                                                             }, {
-                                                                "sector": "지윤",
-                                                                "size": 12.2
-                                                            }, {
-                                                                "sector": "공금",
-                                                                "size": 27.4
+                                                                "sector": "Public Money",
+                                                                "size": 40
                                                             }
                                                     ];
                                         
                                                     // Add label
                                                     
-                                                    chart.innerRadius = 40;
-                                                    chart.radius = 55;
+                                                    chart.innerRadius = 0;
+                                                    chart.radius = 60;
                                                     var label = chart
                                                         .seriesContainer
                                                         .createChild(am4core.Label);
-                                                    label.text = "2018";
+                                                    label.text = "";
                                                     label.horizontalCenter = "middle";
                                                     label.verticalCenter = "middle";
                                                     label.fontSize = 30;
@@ -225,7 +193,7 @@
                                                     pieSeries.dataFields.category = "sector";
                                         
                                                     // Animate chart data
-                                                    var currentYear = 2018;
+                                                    //var currentYear = 2018;
                                                     function getCurrentData() {
                                                         label.text = currentYear;
                                                         var data = chartData[currentYear];
