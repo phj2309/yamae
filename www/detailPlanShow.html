@@ -26,18 +26,17 @@
     <script src="https://www.w3schools.com/lib/w3.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
-
+<!--data-image="\static\img\sidebar-1.jpg"  -->
 <body class="">
     <div class="wrapper ">
-        <div class="sidebar" data-color="purple" data-background-color="white"
-            data-image="\static\img\sidebar-1.jpg">
+        <div class="sidebar" data-color="purple" data-background-color="white">
             <div class="logo">
-                <a class="simple-text logo-normal" href="/index"> Trip ON Trip </a>
+                <a class="simple-text logo-normal" href="/"> Trip ON Trip </a>
             </div>
             <div class="sidebar-wrapper">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="/index">
+                        <a class="nav-link" href="/">
                             <i class="material-icons">home</i>
                             <p>HOME</p>
                         </a>
@@ -106,7 +105,7 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="container">
-                                        <div class="leftbox" onclick="reply_click()">
+                                        <div class="leftbox">
                                             <nav class="tabNav">
                                                 <%  for (var i = 1; i <= day; i++) { %>
                                                 <a href="#" id="day<%= i %>">DAY <%= i %> </a>
@@ -173,13 +172,6 @@
         </div>
     </div>
 
-    <script type="text/javascript">
-        function reply_click(clicked_id)
-        {
-            
-        }
-        </script>
-
 
     <!--   Core JS Files   -->
     <script src="\static\js\core\jquery.min.js"></script>
@@ -211,7 +203,7 @@
     <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
     <script src="\static\js\plugins\nouislider.min.js"></script>
     <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support SweetAlert -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js\2.4.1/core.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
     <!-- Library for adding dinamically elements -->
     <script src="\static\js\plugins\arrive.min.js"></script>
     <!--  Google Maps Plugin    -->
@@ -237,7 +229,7 @@
                 $('nav > a').click(function () {
                     var cdayValue = $(this).attr('id');
                     var planId = $('#planId').val();
-                    $('#btnAdd').attr('onclick', "location.href= '/plan/detailPlanCreate/"+planId+"/"+dayValue+"'");
+                    $('#btnAdd').attr('onclick', "location.href= '/plan/detailPlanCreate/"+planId+"/"+cdayValue+"'");
                 });
                     
                 $(document).ready(function () {
