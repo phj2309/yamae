@@ -37,7 +37,7 @@ module.exports = {
 	},
 	searchPlanByTitle: function(_Keyword) {
 		return new Promise(function(resolve, reject) {
-			var selectQuery = 'SELECT * FROM  tripontrip_db.plan WHERE title LIKE "%?%"';
+			var selectQuery = 'SELECT * FROM tripontrip_db.plan WHERE title LIKE "%?%"';
 
 			sql.excuteParam(selectQuery, [_Keyword]).then(function(rows) {
 				if(rows.length == 0)
@@ -49,9 +49,23 @@ module.exports = {
 			});
 		});
 	},
+	getGroupNickname: function(_planId) {
+		return new Promise(function(resolve, reject) {
+			var selectQuery = 'SELECT nickname FROM tripontrip_db.group WHERE plan_id = ?';
+
+			sql.excuteParam(selectQuery, [_planId]).then(function(rows) {
+				if(rows.length == 0)
+					resolve(null);
+
+				resolve(rows);
+			}).catch(function(error) {
+				reject(error);
+			});
+		});
+	},
 	searchPlanByPlace: function(_Keyword) {
 		return new Promise(function(resolve, reject) {
-			var selectQuery = 'SELECT * FROM  tripontrip_db.place WHERE address LIKE "%?%"';
+			var selectQuery = 'SELECT * FROM tripontrip_db.place WHERE address LIKE "%?%"';
 
 			sql.excuteParam(selectQuery, [_Keyword]).then(function(rows) {
 				if(rows.length == 0)
@@ -65,7 +79,7 @@ module.exports = {
 	},
 	searchPlanByPlaceKeyword: function(_Keyword) {
 		return new Promise(function(resolve, reject) {
-			var selectQuery = 'SELECT * FROM  tripontrip_db.place WHERE keyword LIKE "%?%"';
+			var selectQuery = 'SELECT * FROM tripontrip_db.place WHERE keyword LIKE "%?%"';
 
 			sql.excuteParam(selectQuery, [_Keyword]).then(function(rows) {
 				if(rows.length == 0)
@@ -80,7 +94,7 @@ module.exports = {
 
 	cost: function (_item, _cost) {
 		return new Promise(function (resolve, reject) {
-			var insertQuery = 'INSERT INTO  tripontrip_db.cost (item, cost) VALUES (?, ?)';
+			var insertQuery = 'INSERT INTO tripontrip_db.cost (item, cost) VALUES (?, ?)';
 
 			sql.excuteParam(insertQuery, [_item, _cost]).then(function (rows) {
 				resolve(rows);

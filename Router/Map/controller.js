@@ -8,8 +8,8 @@ exports.toMap = async function(req, res)
     req.session.sMin = req.body.sMin;
     req.session.fHour = req.body.fHour;
     req.session.fMin = req.body.fMin;
-    req.session.planId = req.body.planId;
-    req.session.dayValue = req.body.dayValue;
+   // req.session.planId = req.body.planId;
+    //req.session.dayValue = req.body.dayValue;
 
     console.log("req.session.dayvalue : "+req.session.dayValue);
    // var data = req.body.allData;

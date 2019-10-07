@@ -36,6 +36,7 @@ exports.insertPlan = async function(req, res)
     mapper.plan.createPlan(userId, title, startDate, finishDate, country).then(function(result) {
         console.log(result.insertId);
         var planId = result.insertId;
+        req.session.planId = planId;
 
         for(i=0; i<req.body.mate.length; i++) {
             var nickname = req.body.mate[i];
@@ -66,8 +67,8 @@ exports.insertPlan = async function(req, res)
         console.log("createPlan success");
         req.session.title = title;
         req.session.day = btDay;
-        var dayValue = 'day1';
-        res.render("detailPlanShow.html", { day : btDay, planId : planId, title: title, dayValue: dayValue});
+        var fdayValue = 'day1';
+        res.render("detailPlanShow.html", { day : btDay, planId : planId, title: title, fdayValue: fdayValue});
     }).catch(function(error) {
         console.log(error);
     });
@@ -76,12 +77,14 @@ exports.insertPlan = async function(req, res)
 
 exports.showToCreate = async function(req, res)
 {
-    var planId = req.params.planId;
+    var planId = req.session.planId;
     var dayValue = req.params.dayValue;
+    req.session.dayValue = dayValue;
+    var sdayValue = req.session.dayValue;
     var lat, lon, addressValue, keyword, content, sHour, sMin, fHour, fMin = "";
     console.log("show to create. planId : "+planId);
-    console.log("days : "+dayValue);
-    res.render("detailPlanCreate.html", { planId : planId, dayValue: dayValue, lat: lat, lon: lon, addressValue: addressValue, keyword: keyword,
+    console.log("days : "+sdayValue);
+    res.render("detailPlanCreate.html", { planId : planId, dayValue: sdayValue, lat: lat, lon: lon, addressValue: addressValue, keyword: keyword,
     content: content, sHour: sHour, sMin: sMin, fHour: fHour, fMin:fMin});
 }
 
@@ -137,19 +140,20 @@ exports.insertDetailPlan = async function(req, res)
         var days_detail_id = result.insertId;
         mapper.map.insertPlace(days_detail_id, address, keyword, latitude, longitude).then(function(result) {
             console.log("insertPlace success");
+            mapper.plan.detailPlanList(planId, days).then(function(result) {
+                console.log("detailPlanList 호출");
+                var detailList = new Array();
+                for(var i=0; i<result.length; i++) {
+                    detailList[i] = result[i].content;
+                }
+                res.render("detailPlanShow.html", {planId: planId, title: title, day: day, detailList: detailList, fdayValue: days });
+             }).catch(function(error) {
+                 console.log(error);
+             });
          }).catch(function(error) {
              console.log(error);
          });
-         mapper.plan.detailPlanList(planId, days).then(function(result) {
-            console.log("detailPlanList 호출");
-            var detailList = new Array();
-            for(var i=0; i<result.length; i++) {
-                detailList[i] = result[i].content;
-            }
-            res.render("detailPlanShow.html", {planId: planId, title: title, day: day, detailList: detailList, dayValue: days });
-         }).catch(function(error) {
-             console.log(error);
-         });
+        
      }).catch(function(error) {
          console.log(error);
          
@@ -157,7 +161,7 @@ exports.insertDetailPlan = async function(req, res)
     
 },
 exports.insertReview = async function (req, res) {
-    var dayValue = req.params.dayValue;
+    var dayValue = req.session.dayValue;
     var comment = req.body.review;
 
     var title = req.session.title;
@@ -171,7 +175,7 @@ exports.insertReview = async function (req, res) {
             for(var i=0; i<result.length; i++) {
                 detailList[i] = result[i].content;
             }
-            res.render("detailPlanShow.html", {planId: planId, title: title, day: day, detailList: detailList, dayValue: dayValue });
+            res.render("detailPlanShow.html", {planId: planId, title: title, day: day, detailList: detailList, fdayValue: dayValue, review: comment });
          }).catch(function(error) {
              console.log(error);
          });

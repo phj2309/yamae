@@ -25,7 +25,8 @@
 
 <body class="">
   <div class="wrapper ">
-    <div class="sidebar" data-color="purple" data-background-color="white" data-image="\static\img\sidebar-1.jpg">
+    <div class="sidebar" data-color="purple" data-background-color="white">
+      <!-- data-image="\static\img\sidebar-1.jpg" -->
       <div class="logo">
         <a class="simple-text logo-normal" href="./index"> Trip ON Trip </a>
       </div>
@@ -174,7 +175,7 @@
                         <button type="submit" class="btn btn-primary" id="detailViewColor2" style="width :100%; font-size:14pt;" onclick="javascript: form.action='/plan/detailPlanShow'; javascript: form.method='post';">save</button>
                         <div class="clearfix"></div>
                         <input type="hidden" name="planId" id="planId" value="<%= planId %>">
-                        <input type="hidden" name="dayValue" id="dayValue" value="<%= dayValue %>">
+                        <!-- <input type="hidden" name="dayValue" id="dayValue" value="<%= dayValue %>"> -->
                           <input type="hidden" name="lat" id="lat" value="<%= lat %>">
                           <input type="hidden" name="lon" id="lon" value="<%= lon %>">
                           <input type="hidden" name="addressValue" id="addressValue" value="<%= addressValue %>">

@@ -16,7 +16,7 @@ router.post('/detailPlanCreate', controller.mapSubmit);
 
 router.post('/detailPlanShow', controller.insertDetailPlan);
 
-router.post('/detailPlanShow2/:dayValue', controller.insertReview);
+router.post('/detailPlanShow2', controller.insertReview);
 
 router.get('/costPage/:planId', controller.cost);
 // USER VIEW
