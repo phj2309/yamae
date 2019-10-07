@@ -173,13 +173,6 @@
         </div>
     </div>
 
-    <script type="text/javascript">
-        function reply_click(clicked_id)
-        {
-            
-        }
-        </script>
-
 
     <!--   Core JS Files   -->
     <script src="\static\js\core\jquery.min.js"></script>
@@ -225,22 +218,23 @@
     <!-- Material Dashboard DEMO methods, don't include it in your project! -->
     <!-- <script src="\static\demo\demo.js"></script> -->
     <script type="text/javascript" src="\static\js\drag-arrange.js"></script>
-    <script type="text/javascript" src="\static\js\drag-arrange.min.js"></script>
-    <script src="http://code.jquery.com/jquery-latest.js"></script>    
+    <script type="text/javascript" src="\static\js\drag-arrange.min.js"></script> 
     <script>
 
         $(document).ready(function () {
             $().ready(function () {
 
                 $('li').arrangeable({ dragSelector: '.drag-area' });
+
                 //a태그 클릭하면 폼태그에 있는 값, 리스트 값 다 없어지고 그 태그에 맞는 리스트랑 폼태그 값 가져와야함
                 $('nav > a').click(function () {
                     var cdayValue = $(this).attr('id');
                     var planId = $('#planId').val();
-                    $('#btnAdd').attr('onclick', "location.href= '/plan/detailPlanCreate/"+planId+"/"+dayValue+"'");
+                    $('#btnAdd').attr('onclick', "location.href= '/plan/detailPlanCreate/"+planId+"/"+cdayValue+"'");
                 });
-                    
-                $(document).ready(function () {
+
+                
+                
                     var jbOffset = $('.jbMenu').offset();
                     $(window).scroll(function () {
                         if ($(document).scrollTop() > jbOffset.top) {
@@ -250,7 +244,7 @@
                             $('.jbMenu').removeClass('jbFixed');
                         }
                     });
-                });
+               
 
                 $sidebar = $('.sidebar');
 

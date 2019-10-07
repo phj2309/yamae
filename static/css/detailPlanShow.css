@@ -52,7 +52,7 @@ body {
     width: 20%;
     height : 34px;
     vertical-align: top;
-    float: right;
+    
     cursor: move;
     border-radius : 10px;
   }
