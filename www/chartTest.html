@@ -1,653 +1,412 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <!-- Styles -->
-        <style>
-            #chartdiv {
-                width: 100%;
-                height: 500px;
-            }
-        </style>
-        <!-- Resources -->
-        <script src="https://www.amcharts.com/lib/4/core.js"></script>
-        <script src="https://www.amcharts.com/lib/4/charts.js"></script>
-        <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
-    </head>
-    <body>
-        <!-- Chart code -->
-        <script>
-            am4core.ready(function () {
-zz
-                // Themes begin
-                am4core.useTheme(am4themes_animated);
-                // Themes end
+<html lang="en">
 
-                /**
-         * Define data for each year
-         */
-                var chartData = {
-                    "1995": [
-                        {
-                            "sector": "Agriculture",
-                            "size": 6.6
-                        }, {
-                            "sector": "Mining and Quarrying",
-                            "size": 0.6
-                        }, {
-                            "sector": "Manufacturing",
-                            "size": 23.2
-                        }, {
-                            "sector": "Electricity and Water",
-                            "size": 2.2
-                        }, {
-                            "sector": "Construction",
-                            "size": 4.5
-                        }, {
-                            "sector": "Trade (Wholesale, Retail, Motor)",
-                            "size": 14.6
-                        }, {
-                            "sector": "Transport and Communication",
-                            "size": 9.3
-                        }, {
-                            "sector": "Finance, real estate and business services",
-                            "size": 22.5
-                        }
-                    ],
-                    "1996": [
-                        {
-                            "sector": "Agriculture",
-                            "size": 6.4
-                        }, {
-                            "sector": "Mining and Quarrying",
-                            "size": 0.5
-                        }, {
-                            "sector": "Manufacturing",
-                            "size": 22.4
-                        }, {
-                            "sector": "Electricity and Water",
-                            "size": 2
-                        }, {
-                            "sector": "Construction",
-                            "size": 4.2
-                        }, {
-                            "sector": "Trade (Wholesale, Retail, Motor)",
-                            "size": 14.8
-                        }, {
-                            "sector": "Transport and Communication",
-                            "size": 9.7
-                        }, {
-                            "sector": "Finance, real estate and business services",
-                            "size": 22
-                        }
-                    ],
-                    "1997": [
-                        {
-                            "sector": "Agriculture",
-                            "size": 6.1
-                        }, {
-                            "sector": "Mining and Quarrying",
-                            "size": 0.2
-                        }, {
-                            "sector": "Manufacturing",
-                            "size": 20.9
-                        }, {
-                            "sector": "Electricity and Water",
-                            "size": 1.8
-                        }, {
-                            "sector": "Construction",
-                            "size": 4.2
-                        }, {
-                            "sector": "Trade (Wholesale, Retail, Motor)",
-                            "size": 13.7
-                        }, {
-                            "sector": "Transport and Communication",
-                            "size": 9.4
-                        }, {
-                            "sector": "Finance, real estate and business services",
-                            "size": 22.1
-                        }
-                    ],
-                    "1998": [
-                        {
-                            "sector": "Agriculture",
-                            "size": 6.2
-                        }, {
-                            "sector": "Mining and Quarrying",
-                            "size": 0.3
-                        }, {
-                            "sector": "Manufacturing",
-                            "size": 21.4
-                        }, {
-                            "sector": "Electricity and Water",
-                            "size": 1.9
-                        }, {
-                            "sector": "Construction",
-                            "size": 4.2
-                        }, {
-                            "sector": "Trade (Wholesale, Retail, Motor)",
-                            "size": 14.5
-                        }, {
-                            "sector": "Transport and Communication",
-                            "size": 10.6
-                        }, {
-                            "sector": "Finance, real estate and business services",
-                            "size": 23
-                        }
-                    ],
-                    "1999": [
-                        {
-                            "sector": "Agriculture",
-                            "size": 5.7
-                        }, {
-                            "sector": "Mining and Quarrying",
-                            "size": 0.2
-                        }, {
-                            "sector": "Manufacturing",
-                            "size": 20
-                        }, {
-                            "sector": "Electricity and Water",
-                            "size": 1.8
-                        }, {
-                            "sector": "Construction",
-                            "size": 4.4
-                        }, {
-                            "sector": "Trade (Wholesale, Retail, Motor)",
-                            "size": 15.2
-                        }, {
-                            "sector": "Transport and Communication",
-                            "size": 10.5
-                        }, {
-                            "sector": "Finance, real estate and business services",
-                            "size": 24.7
-                        }
-                    ],
-                    "2000": [
-                        {
-                            "sector": "Agriculture",
-                            "size": 5.1
-                        }, {
-                            "sector": "Mining and Quarrying",
-                            "size": 0.3
-                        }, {
-                            "sector": "Manufacturing",
-                            "size": 20.4
-                        }, {
-                            "sector": "Electricity and Water",
-                            "size": 1.7
-                        }, {
-                            "sector": "Construction",
-                            "size": 4
-                        }, {
-                            "sector": "Trade (Wholesale, Retail, Motor)",
-                            "size": 16.3
-                        }, {
-                            "sector": "Transport and Communication",
-                            "size": 10.7
-                        }, {
-                            "sector": "Finance, real estate and business services",
-                            "size": 24.6
-                        }
-                    ],
-                    "2001": [
-                        {
-                            "sector": "Agriculture",
-                            "size": 5.5
-                        }, {
-                            "sector": "Mining and Quarrying",
-                            "size": 0.2
-                        }, {
-                            "sector": "Manufacturing",
-                            "size": 20.3
-                        }, {
-                            "sector": "Electricity and Water",
-                            "size": 1.6
-                        }, {
-                            "sector": "Construction",
-                            "size": 3.1
-                        }, {
-                            "sector": "Trade (Wholesale, Retail, Motor)",
-                            "size": 16.3
-                        }, {
-                            "sector": "Transport and Communication",
-                            "size": 10.7
-                        }, {
-                            "sector": "Finance, real estate and business services",
-                            "size": 25.8
-                        }
-                    ],
-                    "2002": [
-                        {
-                            "sector": "Agriculture",
-                            "size": 5.7
-                        }, {
-                            "sector": "Mining and Quarrying",
-                            "size": 0.2
-                        }, {
-                            "sector": "Manufacturing",
-                            "size": 20.5
-                        }, {
-                            "sector": "Electricity and Water",
-                            "size": 1.6
-                        }, {
-                            "sector": "Construction",
-                            "size": 3.6
-                        }, {
-                            "sector": "Trade (Wholesale, Retail, Motor)",
-                            "size": 16.1
-                        }, {
-                            "sector": "Transport and Communication",
-                            "size": 10.7
-                        }, {
-                            "sector": "Finance, real estate and business services",
-                            "size": 26
-                        }
-                    ],
-                    "2003": [
-                        {
-                            "sector": "Agriculture",
-                            "size": 4.9
-                        }, {
-                            "sector": "Mining and Quarrying",
-                            "size": 0.2
-                        }, {
-                            "sector": "Manufacturing",
-                            "size": 19.4
-                        }, {
-                            "sector": "Electricity and Water",
-                            "size": 1.5
-                        }, {
-                            "sector": "Construction",
-                            "size": 3.3
-                        }, {
-                            "sector": "Trade (Wholesale, Retail, Motor)",
-                            "size": 16.2
-                        }, {
-                            "sector": "Transport and Communication",
-                            "size": 11
-                        }, {
-                            "sector": "Finance, real estate and business services",
-                            "size": 27.5
-                        }
-                    ],
-                    "2004": [
-                        {
-                            "sector": "Agriculture",
-                            "size": 4.7
-                        }, {
-                            "sector": "Mining and Quarrying",
-                            "size": 0.2
-                        }, {
-                            "sector": "Manufacturing",
-                            "size": 18.4
-                        }, {
-                            "sector": "Electricity and Water",
-                            "size": 1.4
-                        }, {
-                            "sector": "Construction",
-                            "size": 3.3
-                        }, {
-                            "sector": "Trade (Wholesale, Retail, Motor)",
-                            "size": 16.9
-                        }, {
-                            "sector": "Transport and Communication",
-                            "size": 10.6
-                        }, {
-                            "sector": "Finance, real estate and business services",
-                            "size": 28.1
-                        }
-                    ],
-                    "2005": [
-                        {
-                            "sector": "Agriculture",
-                            "size": 4.3
-                        }, {
-                            "sector": "Mining and Quarrying",
-                            "size": 0.2
-                        }, {
-                            "sector": "Manufacturing",
-                            "size": 18.1
-                        }, {
-                            "sector": "Electricity and Water",
-                            "size": 1.4
-                        }, {
-                            "sector": "Construction",
-                            "size": 3.9
-                        }, {
-                            "sector": "Trade (Wholesale, Retail, Motor)",
-                            "size": 15.7
-                        }, {
-                            "sector": "Transport and Communication",
-                            "size": 10.6
-                        }, {
-                            "sector": "Finance, real estate and business services",
-                            "size": 29.1
-                        }
-                    ],
-                    "2006": [
-                        {
-                            "sector": "Agriculture",
-                            "size": 4
-                        }, {
-                            "sector": "Mining and Quarrying",
-                            "size": 0.2
-                        }, {
-                            "sector": "Manufacturing",
-                            "size": 16.5
-                        }, {
-                            "sector": "Electricity and Water",
-                            "size": 1.3
-                        }, {
-                            "sector": "Construction",
-                            "size": 3.7
-                        }, {
-                            "sector": "Trade (Wholesale, Retail, Motor)",
-                            "size": 14.2
-                        }, {
-                            "sector": "Transport and Communication",
-                            "size": 12.1
-                        }, {
-                            "sector": "Finance, real estate and business services",
-                            "size": 29.1
-                        }
-                    ],
-                    "2007": [
-                        {
-                            "sector": "Agriculture",
-                            "size": 4.7
-                        }, {
-                            "sector": "Mining and Quarrying",
-                            "size": 0.2
-                        }, {
-                            "sector": "Manufacturing",
-                            "size": 16.2
-                        }, {
-                            "sector": "Electricity and Water",
-                            "size": 1.2
-                        }, {
-                            "sector": "Construction",
-                            "size": 4.1
-                        }, {
-                            "sector": "Trade (Wholesale, Retail, Motor)",
-                            "size": 15.6
-                        }, {
-                            "sector": "Transport and Communication",
-                            "size": 11.2
-                        }, {
-                            "sector": "Finance, real estate and business services",
-                            "size": 30.4
-                        }
-                    ],
-                    "2008": [
-                        {
-                            "sector": "Agriculture",
-                            "size": 4.9
-                        }, {
-                            "sector": "Mining and Quarrying",
-                            "size": 0.3
-                        }, {
-                            "sector": "Manufacturing",
-                            "size": 17.2
-                        }, {
-                            "sector": "Electricity and Water",
-                            "size": 1.4
-                        }, {
-                            "sector": "Construction",
-                            "size": 5.1
-                        }, {
-                            "sector": "Trade (Wholesale, Retail, Motor)",
-                            "size": 15.4
-                        }, {
-                            "sector": "Transport and Communication",
-                            "size": 11.1
-                        }, {
-                            "sector": "Finance, real estate and business services",
-                            "size": 28.4
-                        }
-                    ],
-                    "2009": [
-                        {
-                            "sector": "Agriculture",
-                            "size": 4.7
-                        }, {
-                            "sector": "Mining and Quarrying",
-                            "size": 0.3
-                        }, {
-                            "sector": "Manufacturing",
-                            "size": 16.4
-                        }, {
-                            "sector": "Electricity and Water",
-                            "size": 1.9
-                        }, {
-                            "sector": "Construction",
-                            "size": 4.9
-                        }, {
-                            "sector": "Trade (Wholesale, Retail, Motor)",
-                            "size": 15.5
-                        }, {
-                            "sector": "Transport and Communication",
-                            "size": 10.9
-                        }, {
-                            "sector": "Finance, real estate and business services",
-                            "size": 27.9
-                        }
-                    ],
-                    "2010": [
-                        {
-                            "sector": "Agriculture",
-                            "size": 4.2
-                        }, {
-                            "sector": "Mining and Quarrying",
-                            "size": 0.3
-                        }, {
-                            "sector": "Manufacturing",
-                            "size": 16.2
-                        }, {
-                            "sector": "Electricity and Water",
-                            "size": 2.2
-                        }, {
-                            "sector": "Construction",
-                            "size": 4.3
-                        }, {
-                            "sector": "Trade (Wholesale, Retail, Motor)",
-                            "size": 15.7
-                        }, {
-                            "sector": "Transport and Communication",
-                            "size": 10.2
-                        }, {
-                            "sector": "Finance, real estate and business services",
-                            "size": 28.8
-                        }
-                    ],
-                    "2011": [
-                        {
-                            "sector": "Agriculture",
-                            "size": 4.1
-                        }, {
-                            "sector": "Mining and Quarrying",
-                            "size": 0.3
-                        }, {
-                            "sector": "Manufacturing",
-                            "size": 14.9
-                        }, {
-                            "sector": "Electricity and Water",
-                            "size": 2.3
-                        }, {
-                            "sector": "Construction",
-                            "size": 5
-                        }, {
-                            "sector": "Trade (Wholesale, Retail, Motor)",
-                            "size": 17.3
-                        }, {
-                            "sector": "Transport and Communication",
-                            "size": 10.2
-                        }, {
-                            "sector": "Finance, real estate and business services",
-                            "size": 27.2
-                        }
-                    ],
-                    "2012": [
-                        {
-                            "sector": "Agriculture",
-                            "size": 3.8
-                        }, {
-                            "sector": "Mining and Quarrying",
-                            "size": 0.3
-                        }, {
-                            "sector": "Manufacturing",
-                            "size": 14.9
-                        }, {
-                            "sector": "Electricity and Water",
-                            "size": 2.6
-                        }, {
-                            "sector": "Construction",
-                            "size": 5.1
-                        }, {
-                            "sector": "Trade (Wholesale, Retail, Motor)",
-                            "size": 15.8
-                        }, {
-                            "sector": "Transport and Communication",
-                            "size": 10.7
-                        }, {
-                            "sector": "Finance, real estate and business services",
-                            "size": 28
-                        }
-                    ],
-                    "2013": [
-                        {
-                            "sector": "Agriculture",
-                            "size": 3.7
-                        }, {
-                            "sector": "Mining and Quarrying",
-                            "size": 0.2
-                        }, {
-                            "sector": "Manufacturing",
-                            "size": 14.9
-                        }, {
-                            "sector": "Electricity and Water",
-                            "size": 2.7
-                        }, {
-                            "sector": "Construction",
-                            "size": 5.7
-                        }, {
-                            "sector": "Trade (Wholesale, Retail, Motor)",
-                            "size": 16.5
-                        }, {
-                            "sector": "Transport and Communication",
-                            "size": 10.5
-                        }, {
-                            "sector": "Finance, real estate and business services",
-                            "size": 26.6
-                        }
-                    ],
-                    "2014": [
-                        {
-                            "sector": "Agriculture",
-                            "size": 3.9
-                        }, {
-                            "sector": "Mining and Quarrying",
-                            "size": 0.2
-                        }, {
-                            "sector": "Manufacturing",
-                            "size": 14.5
-                        }, {
-                            "sector": "Electricity and Water",
-                            "size": 2.7
-                        }, {
-                            "sector": "Construction",
-                            "size": 5.6
-                        }, {
-                            "sector": "Trade (Wholesale, Retail, Motor)",
-                            "size": 16.6
-                        }, {
-                            "sector": "Transport and Communication",
-                            "size": 10.5
-                        }, {
-                            "sector": "Finance, real estate and business services",
-                            "size": 26.5
-                        }
+<head>
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="76x76" href="../static/img/apple-icon.png">
+    <link rel="shortcut icon" type="image/png" href="../static/img/favicon.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>
+        Trip ON Trip
+    </title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
+        name='viewport' />
+    <!--     Fonts and icons     -->
+    <link rel="stylesheet" type="text/css"
+        href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <!-- CSS Files -->
+    <link href="../static/css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link href="../static/demo/demo.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="../static/js/core.js"></script>
+    <script src="../static/js/charts.js"></script>
+    <script src="../static/js/animated.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="https://cdnjs.com/libraries/Chart.js"></script>
+    <script src="https://www.jsdelivr.com/package/npm/chart.js?path=dist"></script>
+
+    <style>
+        #chartdiv {
+            width: 100%;
+            height: 500px;
+        }
+    </style>
+</head>
+
+<body class="">
+    <div class="wrapper ">
+        <div class="sidebar" data-color="purple" data-background-color="white" data-image="../static/img/sidebar-1.jpg">
+            <div class="logo">
+                <a class="simple-text logo-normal" href="./index">
+                    Trip ON Trip
+                </a>
+            </div>
+            <div class="sidebar-wrapper">
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="./index">
+                            <i class="material-icons">home</i>
+                            <p>HOME</p>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="./plan">
+                            <i class="material-icons">flight_takeoff</i>
+                            <p>PLAN</p>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="./tables">
+                            <i class="material-icons">attach_money</i>
+                            <p>Expense</p>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="./typography">
+                            <i class="material-icons">favorite</i>
+                            <p>Favorite Plan</p>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="#pablo" id="navbarDropdownProfile" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            <i class="material-icons">person</i>
+                            <p class="d-lg-none d-md-block">
+                                User Profile
+                            </p>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
+                            <a class="dropdown-item" href="./costPage">Profile</a>
+                            <a class="dropdown-item" href="#">My Plan</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="./login">Log Out</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="main-panel">
+            <!-- Navbar -->
+            <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+                <div class="container-fluid">
+                    <div class="navbar-wrapper">
+                        <a class="navbar-brand" href="#pablo">Expense</a>
+                    </div>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="navbar-toggler-icon icon-bar"></span>
+                        <span class="navbar-toggler-icon icon-bar"></span>
+                        <span class="navbar-toggler-icon icon-bar"></span>
+                    </button>
+
+                </div>
+            </nav>
+            <!-- End Navbar -->
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="card">
+                                <div class="card-header card-header-primary">
+                                    <h3 class="card-title">My travel cost</h3>
+                                </div>
+                                <div class="card-body">
+                                    <script>
+                                        var ctx = document.getElementById('myChart').getContext('2d');
+                                        var chart = new Chart(ctx, {
+                                            // The type of chart we want to create
+                                            type: 'line',
+
+                                            // The data for our dataset
+                                            data: {
+                                                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                                                datasets: [{
+                                                    label: 'My First dataset',
+                                                    backgroundColor: 'rgb(255, 99, 132)',
+                                                    borderColor: 'rgb(255, 99, 132)',
+                                                    data: [0, 10, 5, 2, 20, 30, 45]
+                                                }]
+                                            },
+
+                                            // Configuration options go here
+                                            options: {}
+                                        });
+
+                                    </script>
+
+
+
+                                    <canvas id="myChart"></canvas>
+                                    <div id="chartdiv"></div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--   Core JS Files   -->
+    <script src="../static/js/core/jquery.min.js"></script>
+    <script src="../static/js/core/popper.min.js"></script>
+    <script src="../static/js/core/bootstrap-material-design.min.js"></script>
+    <script src="../static/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+    <!-- Plugin for the momentJs  -->
+    <script src="../static/js/plugins/moment.min.js"></script>
+    <!--  Plugin for Sweet Alert -->
+    <script src="../static/js/plugins/sweetalert2.js"></script>
+    <!-- Forms Validations Plugin -->
+    <script src="../static/js/plugins/jquery.validate.min.js"></script>
+    <!-- Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
+    <script src="../static/js/plugins/jquery.bootstrap-wizard.js"></script>
+    <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
+    <script src="../static/js/plugins/bootstrap-selectpicker.js"></script>
+    <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
+    <script src="../static/js/plugins/bootstrap-datetimepicker.min.js"></script>
+    <!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
+    <script src="../static/js/plugins/jquery.dataTables.min.js"></script>
+    <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
+    <script src="../static/js/plugins/bootstrap-tagsinput.js"></script>
+    <!-- Plugin for Fileupload, full documentation here: http://static.jasny.net/bootstrap/javascript/#fileinput -->
+    <script src="../static/js/plugins/jasny-bootstrap.min.js"></script>
+    <!--  Full Calendar Plugin, full documentation here: https://github.com/fullcalendar/fullcalendar    -->
+    <script src="../static/js/plugins/fullcalendar.min.js"></script>
+    <!-- Vector Map plugin, full documentation here: http://jvectormap.com/documentation/ -->
+    <script src="../static/js/plugins/jquery-jvectormap.js"></script>
+    <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+    <script src="../static/js/plugins/nouislider.min.js"></script>
+    <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support SweetAlert -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+    <!-- Library for adding dinamically elements -->
+    <script src="../static/js/plugins/arrive.min.js"></script>
+    <!--  Google Maps Plugin <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>   -->
+
+    <!-- Chartist JS -->
+    <script src="../static/js/plugins/chartist.min.js"></script>
+    <!--  Notifications Plugin    -->
+    <script src="../static/js/plugins/bootstrap-notify.js"></script>
+    <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+    <script src="../static/js/material-dashboard.js?v=2.1.1" type="text/javascript"></script>
+    <!-- Material Dashboard DEMO methods, don't include it in your project! -->
+    <script src="../static/demo/demo.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $().ready(function () {
+
+
+                // For a pie chart
+                var myPieChart = new Chart(ctx, {
+                    type: 'pie',
+                    data: data,
+                    options: options
+                });
+
+                // And for a doughnut chart
+                var myDoughnutChart = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: data,
+                    options: options
+                });
+
+                data = {
+                    datasets: [{
+                        data: [10, 20, 30]
+                    }],
+
+                    // These labels appear in the legend and in the tooltips when hovering different arcs
+                    labels: [
+                        'Red',
+                        'Yellow',
+                        'Blue'
                     ]
                 };
 
-                // Create chart instance
-                var chart = am4core.create("chartdiv", am4charts.PieChart);
 
-                // Add data
-                chart.data = [
-                    {
-                        "sector": "Agriculture",
-                        "size": 6.6
-                    }, {
-                        "sector": "Mining and Quarrying",
-                        "size": 0.6
-                    }, {
-                        "sector": "Manufacturing",
-                        "size": 23.2
-                    }, {
-                        "sector": "Electricity and Water",
-                        "size": 2.2
-                    }, {
-                        "sector": "Construction",
-                        "size": 4.5
-                    }, {
-                        "sector": "Trade (Wholesale, Retail, Motor)",
-                        "size": 14.6
-                    }, {
-                        "sector": "Transport and Communication",
-                        "size": 9.3
-                    }, {
-                        "sector": "Finance, real estate and business services",
-                        "size": 22.5
+
+
+                var travelMate = 1;
+
+                $('#add').click(function () {
+                    $('#add_contents').append("<div class='col-12' id= 'add_contents'><div class='form-group'><label class='bmd-label-floating'>Your Travel Mates</label><input type='text' class='form-control' name='mate[]'></div></div>")
+                    travelMate++;
+                });
+
+                $sidebar = $('.sidebar');
+
+                $sidebar_img_container = $sidebar.find('.sidebar-background');
+
+                $full_page = $('.full-page');
+
+                $sidebar_responsive = $('body > .navbar-collapse');
+
+                window_width = $(window).width();
+
+                fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
+
+                if (window_width > 767 && fixed_plugin_open == 'Dashboard') {
+                    if ($('.fixed-plugin .dropdown').hasClass('show-dropdown')) {
+                        $('.fixed-plugin .dropdown').addClass('open');
                     }
-                ];
 
-                // Add label
-                chart.innerRadius = 100;
-                var label = chart
-                    .seriesContainer
-                    .createChild(am4core.Label);
-                label.text = "1995";
-                label.horizontalCenter = "middle";
-                label.verticalCenter = "middle";
-                label.fontSize = 50;
-
-                // Add and configure Series
-                var pieSeries = chart
-                    .series
-                    .push(new am4charts.PieSeries());
-                pieSeries.dataFields.value = "size";
-                pieSeries.dataFields.category = "sector";
-
-                // Animate chart data
-                var currentYear = 1995;
-                function getCurrentData() {
-                    label.text = currentYear;
-                    var data = chartData[currentYear];
-                    currentYear++;
-                    if (currentYear > 2014) 
-                        currentYear = 1995;
-                    return data;
                 }
 
-                function loop() {
-                    //chart.allLabels[0].text = currentYear;
-                    var data = getCurrentData();
-                    for (var i = 0; i < data.length; i++) {
-                        chart
-                            .data[i]
-                            .size = data[i]
-                            .size;
+                $('.fixed-plugin a').click(function (event) {
+                    // Alex if we click on switch, stop propagation of the event, so the dropdown will not be hide, otherwise we set the  section active
+                    if ($(this).hasClass('switch-trigger')) {
+                        if (event.stopPropagation) {
+                            event.stopPropagation();
+                        } else if (window.event) {
+                            window.event.cancelBubble = true;
+                        }
                     }
-                    chart.invalidateRawData();
-                    chart.setTimeout(loop, 4000);
-                }
+                });
 
-                loop();
+                $('.fixed-plugin .active-color span').click(function () {
+                    $full_page_background = $('.full-page-background');
 
-            }); // end am4core.ready()
-        </script>
+                    $(this).siblings().removeClass('active');
+                    $(this).addClass('active');
 
-        <!-- HTML -->
-        <div id="chartdiv"></div>
+                    var new_color = $(this).data('color');
 
-    </body>
+                    if ($sidebar.length != 0) {
+                        $sidebar.attr('data-color', new_color);
+                    }
+
+                    if ($full_page.length != 0) {
+                        $full_page.attr('filter-color', new_color);
+                    }
+
+                    if ($sidebar_responsive.length != 0) {
+                        $sidebar_responsive.attr('data-color', new_color);
+                    }
+                });
+
+                $('.fixed-plugin .background-color .badge').click(function () {
+                    $(this).siblings().removeClass('active');
+                    $(this).addClass('active');
+
+                    var new_color = $(this).data('background-color');
+
+                    if ($sidebar.length != 0) {
+                        $sidebar.attr('data-background-color', new_color);
+                    }
+                });
+
+                $('.fixed-plugin .img-holder').click(function () {
+                    $full_page_background = $('.full-page-background');
+
+                    $(this).parent('li').siblings().removeClass('active');
+                    $(this).parent('li').addClass('active');
+
+
+                    var new_image = $(this).find("img").attr('src');
+
+                    if ($sidebar_img_container.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
+                        $sidebar_img_container.fadeOut('fast', function () {
+                            $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
+                            $sidebar_img_container.fadeIn('fast');
+                        });
+                    }
+
+                    if ($full_page_background.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
+                        var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
+
+                        $full_page_background.fadeOut('fast', function () {
+                            $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
+                            $full_page_background.fadeIn('fast');
+                        });
+                    }
+
+                    if ($('.switch-sidebar-image input:checked').length == 0) {
+                        var new_image = $('.fixed-plugin li.active .img-holder').find("img").attr('src');
+                        var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
+
+                        $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
+                        $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
+                    }
+
+                    if ($sidebar_responsive.length != 0) {
+                        $sidebar_responsive.css('background-image', 'url("' + new_image + '")');
+                    }
+                });
+
+                $('.switch-sidebar-image input').change(function () {
+                    $full_page_background = $('.full-page-background');
+
+                    $input = $(this);
+
+                    if ($input.is(':checked')) {
+                        if ($sidebar_img_container.length != 0) {
+                            $sidebar_img_container.fadeIn('fast');
+                            $sidebar.attr('data-image', '#');
+                        }
+
+                        if ($full_page_background.length != 0) {
+                            $full_page_background.fadeIn('fast');
+                            $full_page.attr('data-image', '#');
+                        }
+
+                        background_image = true;
+                    } else {
+                        if ($sidebar_img_container.length != 0) {
+                            $sidebar.removeAttr('data-image');
+                            $sidebar_img_container.fadeOut('fast');
+                        }
+
+                        if ($full_page_background.length != 0) {
+                            $full_page.removeAttr('data-image', '#');
+                            $full_page_background.fadeOut('fast');
+                        }
+
+                        background_image = false;
+                    }
+                });
+
+                $('.switch-sidebar-mini input').change(function () {
+                    $body = $('body');
+
+                    $input = $(this);
+
+                    if (md.misc.sidebar_mini_active == true) {
+                        $('body').removeClass('sidebar-mini');
+                        md.misc.sidebar_mini_active = false;
+
+                        $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar();
+
+                    } else {
+
+                        $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar('destroy');
+
+                        setTimeout(function () {
+                            $('body').addClass('sidebar-mini');
+
+                            md.misc.sidebar_mini_active = true;
+                        }, 300);
+                    }
+
+                    // we simulate the window Resize so the charts will get updated in realtime.
+                    var simulateWindowResize = setInterval(function () {
+                        window.dispatchEvent(new Event('resize'));
+                    }, 180);
+
+                    // we stop the simulation of Window Resize after the animations are completed
+                    setTimeout(function () {
+                        clearInterval(simulateWindowResize);
+                    }, 1000);
+
+                });
+            });
+        });
+
+    </script>
+</body>
+
 </html>

@@ -22,17 +22,15 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
         <script src="../static/js/core.js"></script>
-        <script src="../static/js/charts.js"></script>s
+        <script src="../static/js/charts.js"></script>
         <script src="../static/js/animated.js"></script>
-        <script src="../static/js/amcharts.js"></script>
 
     
     <style>
         #chartdiv {
             width: 100%;
-            height: 500px;
+            height: 400px;
         }
-        .amcharts-chart-div a {display : none! important;}
         
     </style>
 </head>
@@ -127,59 +125,59 @@
                                              * Define data for each year
                                              */
                                                     var chartData = {
-                                                        "지유니네 놀러가기": [
+                                                        "2018": [
                                                             {
-                                                                "sector": "30under_juu",
+                                                                "sector": "현주",
                                                                 "size": 26.6
                                                             }, {
-                                                                "sector": "11_hyeon",
+                                                                "sector": "현지",
                                                                 "size": 10.6
                                                             }, {
-                                                                "sector": "soubii_g",
+                                                                "sector": "수빈",
                                                                 "size": 23.2
                                                             }, {
-                                                                "sector": "z_yooon2da",
+                                                                "sector": "지윤",
                                                                 "size": 12.2
                                                             }, {
-                                                                "sector": "Public Money",
+                                                                "sector": "공금",
                                                                 "size": 27.4
                                                             }
                                                         ],
                                         
-                                                        "라오스 여행": [
+                                                        "2019": [
                                                             {
-                                                                "sector": "30under_juu",
+                                                                "sector": "현주",
                                                                 "size": 30
                                                             }, {
-                                                                "sector": "11_hyeon",
+                                                                "sector": "현지",
                                                                 "size": 10
                                                             }, {
-                                                                "sector": "soubii_g",
+                                                                "sector": "수빈",
                                                                 "size": 20
                                                             }, {
-                                                                "sector": "z_yooon2da",
+                                                                "sector": "지윤",
                                                                 "size": 10
                                                             }, {
-                                                                "sector": "Public Money",
+                                                                "sector": "공금",
                                                                 "size": 30
                                                             }
                                                         ],
                                                         
-                                                        "군산 피바다": [
+                                                        "2020": [
                                                             {
-                                                                "sector": "30under_juu",
+                                                                "sector": "현주",
                                                                 "size": 10
                                                             }, {
-                                                                "sector": "11_hyeon",
+                                                                "sector": "현지",
                                                                 "size": 30
                                                             }, {
-                                                                "sector": "soubii_g",
+                                                                "sector": "수빈",
                                                                 "size": 5
                                                             }, {
-                                                                "sector": "z_yooon2da",
+                                                                "sector": "지윤",
                                                                 "size": 25
                                                             }, {
-                                                                "sector": "Public Money",
+                                                                "sector": "공금",
                                                                 "size": 30
                                                             }
                                                         ]
@@ -192,39 +190,37 @@
                                                     // Add data
                                                     chart.data = [
                                                     {
-                                                                "sector": "30under_juu",
+                                                                "sector": "현주",
                                                                 "size": 26.6
                                                             }, {
-                                                                "sector": "11_hyeon",
+                                                                "sector": "현지",
                                                                 "size": 10.6
                                                             }, {
-                                                                "sector": "soubii_g",
+                                                                "sector": "수빈",
                                                                 "size": 23.2
                                                             }, {
-                                                                "sector": "z_yooon2da",
+                                                                "sector": "지윤",
                                                                 "size": 12.2
                                                             }, {
-                                                                "sector": "Public Money",
+                                                                "sector": "공금",
                                                                 "size": 27.4
                                                             }
                                                     ];
                                         
                                                     // Add label
                                                     
-                                                    chart.innerRadius = 30;
-                                                    chart.radius = 50;
+                                                    chart.innerRadius = 40;
+                                                    chart.radius = 55;
                                                     var label = chart
                                                         .seriesContainer
                                                         .createChild(am4core.Label);
-                                                    label.text = "지유니네 놀러가기";
+                                                    label.text = "2018";
                                                     label.horizontalCenter = "middle";
                                                     label.verticalCenter = "middle";
-                                                    label.fontSize = 20;
+                                                    label.fontSize = 30;
                                         
                                                     // Add and configure Series
-                                                    var pieSeries = chart
-                                                        .series
-                                                        .push(new am4charts.PieSeries());
+                                                    var pieSeries = chart.series.push(new am4charts.PieSeries());
                                                     pieSeries.dataFields.value = "size";
                                                     pieSeries.dataFields.category = "sector";
                                         
@@ -243,10 +239,7 @@
                                                         //chart.allLabels[0].text = currentYear;
                                                         var data = getCurrentData();
                                                         for (var i = 0; i < data.length; i++) {
-                                                            chart
-                                                                .data[i]
-                                                                .size = data[i]
-                                                                    .size;
+                                                            chart.data[i].size = data[i].size;
                                                         }
                                                         chart.invalidateRawData();
                                                         chart.setTimeout(loop, 5000);

@@ -106,10 +106,10 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="container">
-                                        <div class="leftbox">
+                                        <div class="leftbox" onclick="reply_click()">
                                             <nav class="tabNav">
                                                 <%  for (var i = 1; i <= day; i++) { %>
-                                                <a href="#" id="day<%= i %>" onclick="document.getElementById('day<%= i %>').style.color='black';">DAY <%= i %> </a>
+                                                <a href="#" id="day<%= i %>">DAY <%= i %> </a>
                                                 <%   } %>
                                             </nav>
                                         </div>
@@ -172,6 +172,14 @@
             </div>
         </div>
     </div>
+
+    <script type="text/javascript">
+        function reply_click(clicked_id)
+        {
+            
+        }
+        </script>
+
 
     <!--   Core JS Files   -->
     <script src="../../static/js/core/jquery.min.js"></script>
