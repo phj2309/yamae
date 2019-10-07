@@ -18,6 +18,14 @@ router.get('/detailPlanShow_2_st', controller.fDetailShow);
 
 router.get('/detailPlanShow_2_nd', controller.sDetailShow);
 
+router.get('/index_stack2', controller.index2);
+
+router.get('/index_search', controller.indexSearch);
+
+router.get('/mypage_profile', controller.profile);
+
+router.get('/myPage_plan', controller.myPlan);
+
 
 
 // USER VIEW

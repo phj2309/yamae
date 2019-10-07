@@ -89,6 +89,6 @@ exports.logout = async function (req, res) {
     req
         .session
         .save(() => {
-            res.redirect('/');
+            res.redirect('/index_stack2');
         });
 }
