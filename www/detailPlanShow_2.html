@@ -229,6 +229,8 @@
         $(document).ready(function () {
             $().ready(function () {
 
+                $('li').arrangeable({ dragSelector: '.drag-area' });
+
                 $(".heart.fa").click(function() {
                     $(this).toggleClass("fa-heart fa-heart-o");
                 });
